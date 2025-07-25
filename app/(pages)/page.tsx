@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Hero from '../../components/sections/Hero';
 import ContentSection from '../../components/sections/ContentSection';
@@ -34,6 +36,14 @@ export default function Home() {
       color: 'bg-orange-500'
     }
   ];
+
+  const handleFreeTrial = () => {
+    console.log('Free trial clicked');
+  };
+
+  const handleContactSales = () => {
+    console.log('Contact sales clicked');
+  };
 
   return (
     <div className="min-h-screen">
@@ -122,10 +132,16 @@ export default function Home() {
             Assemble adapts to your needs and grows with you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+            <button 
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+              onClick={handleFreeTrial}
+            >
               Free Trial
             </button>
-            <button className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
+            <button 
+              className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors"
+              onClick={handleContactSales}
+            >
               Contact Sales
             </button>
           </div>
