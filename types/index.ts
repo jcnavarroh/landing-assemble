@@ -1,166 +1,142 @@
-// Re-export API types
-export type { 
-  ApiResponse, 
-  User, 
-  Project 
-} from '../services/api';
+export interface LandingPage {
+  id:  number;
+  acf: Acf;
+}
 
-// Import types for internal use
-import type { User, Project } from '../services/api';
+export interface WordPressPage {
+  id: number;
+  acf: Acf;
+}
 
-// Additional types for the application
-export interface Feature {
-  id: string;
-  title: string;
+export interface Acf {
+  header: Header;
+  body:   Body;
+  footer: Footer;
+}
+
+export interface Body {
+  hero_image: HeroImage;
+  row_1:      Row1;
+  row_2:      Row2;
+}
+
+export interface HeroImage {
+  desktop_image: Image;
+  mobile_image:  Image;
+}
+
+export interface Image {
+  ID:          number;
+  id:          number;
+  title:       string;
+  filename:    string;
+  filesize:    number;
+  url:         string;
+  link:        string;
+  alt:         string;
+  author:      string;
   description: string;
-  icon: string;
-  color: string;
+  caption:     string;
+  name:        string;
+  status:      string;
+  uploaded_to: number;
+  date:        Date;
+  modified:    Date;
+  menu_order:  number;
+  mime_type:   string;
+  type:        string;
+  subtype:     string;
+  icon:        string;
+  width:       number;
+  height:      number;
+  sizes:       Sizes;
 }
 
-export interface Testimonial {
-  id: string;
-  name: string;
-  role: string;
-  company: string;
-  content: string;
-  avatar: string;
-  rating: number;
+export interface Sizes {
+  thumbnail:             string;
+  "thumbnail-width":     number;
+  "thumbnail-height":    number;
+  medium:                string;
+  "medium-width":        number;
+  "medium-height":       number;
+  medium_large:          string;
+  "medium_large-width":  number;
+  "medium_large-height": number;
+  large:                 string;
+  "large-width":         number;
+  "large-height":        number;
+  "1536x1536":           string;
+  "1536x1536-width":     number;
+  "1536x1536-height":    number;
+  "2048x2048":           string;
+  "2048x2048-width":     number;
+  "2048x2048-height":    number;
 }
 
-export interface PricingPlan {
-  id: string;
-  name: string;
-  price: number;
-  currency: string;
-  period: 'monthly' | 'yearly';
-  features: string[];
-  popular?: boolean;
-  cta: string;
+export interface Row1 {
+  title:      string;
+  image_tile: Row1_ImageTile[];
 }
 
-export interface ContactForm {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
+export interface Row1_ImageTile {
+  image:       Image;
+  title:       string;
+  description: string;
 }
 
-export interface NewsletterSubscription {
-  email: string;
-  preferences?: {
-    marketing: boolean;
-    updates: boolean;
-  };
+export interface Row2 {
+  title:      string;
+  image_tile: Row2_ImageTile[];
 }
 
-// Types for application state
-export interface AppState {
-  user: User | null;
-  projects: Project[];
-  loading: boolean;
-  error: string | null;
-}
-
-// Types for events
-export interface AppEvent {
-  type: string;
-  payload: unknown;
-  timestamp: Date;
-}
-
-// Types for configuration
-export interface AppConfig {
-  apiUrl: string;
-  environment: 'development' | 'staging' | 'production';
-  features: {
-    [key: string]: boolean;
-  };
-}
-
-// Types for navigation
-export interface NavigationItem {
-  label: string;
-  href: string;
-  external?: boolean;
-  children?: NavigationItem[];
-}
-
-export interface BreadcrumbItem {
-  label: string;
-  href: string;
-  current?: boolean;
-}
-
-// Types for forms
-export interface FormField {
-  name: string;
-  label: string;
-  type: 'text' | 'email' | 'password' | 'textarea' | 'select' | 'checkbox' | 'radio';
-  required?: boolean;
-  placeholder?: string;
-  options?: { value: string; label: string }[];
-  validation?: {
-    pattern?: string;
-    minLength?: number;
-    maxLength?: number;
-    custom?: (value: unknown) => string | null;
-  };
-}
-
-export interface FormData {
-  [key: string]: unknown;
-}
-
-export interface FormErrors {
-  [key: string]: string;
-}
-
-// Types for notifications
-export interface Notification {
-  id: string;
-  type: 'success' | 'error' | 'warning' | 'info';
+export interface Row2_ImageTile {
+  image: Image;
   title: string;
-  message: string;
-  duration?: number;
-  action?: {
-    label: string;
-    onClick: () => void;
-  };
 }
 
-// Types for modals
-export interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title?: string;
-  children: React.ReactNode;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+export interface Footer {
+  footer_title:  string;
+  contact_links: ContactLink[];
 }
 
-// Types for tooltips
-export interface TooltipProps {
-  content: string;
-  children: React.ReactNode;
-  position?: 'top' | 'bottom' | 'left' | 'right';
-  delay?: number;
+export interface ContactLink {
+  item: Item;
 }
 
-// Types for loading states
-export interface LoadingState {
-  isLoading: boolean;
+export interface Item {
+  title:  string;
+  url:    string;
+  target: string;
+}
+
+export interface Header {
+  company_name: string;
+  menu_items:   ContactLink[];
+}
+
+// API Response types
+export interface ApiResponse<T> {
+  data: T | null;
   error: string | null;
-  retry?: () => void;
 }
 
-// Types for pagination
-export interface Pagination {
-  page: number;
-  limit: number;
-  total: number;
-  totalPages: number;
+// Component Props types
+export interface HeroProps {
+  data?: HeroImage;
 }
 
-export interface PaginatedResponse<T> {
-  data: T[];
-  pagination: Pagination;
-} 
+export interface ReliableProps {
+  data?: Row1;
+}
+
+export interface FirstClassProps {
+  data?: Row2;
+}
+
+export interface HeaderProps {
+  data?: Header;
+}
+
+export interface FooterProps {
+  data?: Footer;
+}

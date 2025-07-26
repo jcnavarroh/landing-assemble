@@ -1,37 +1,55 @@
 import React from 'react';
 import Link from 'next/link';
+import { HeaderProps } from '../../types';
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({ data }) => {
+  // Fallback data si no hay datos del API
+  const headerData = {
+    company_name: "FINTECH",
+    menu_items: [
+      { item: { title: "Home", url: "/", target: "_self" } },
+      { item: { title: "About", url: "/about", target: "_self" } },
+      { item: { title: "Contact", url: "/contact", target: "_self" } }
+    ]
+  };
+
+  const menuItems = data?.menu_items || headerData.menu_items;
+  const companyName = data?.company_name || headerData.company_name;
+
   return (
-    <header className="bg-white shadow-sm border-b">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-gray-900">
-              Assemble
-            </Link>
-          </div>
-          <nav className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-              Home
-            </Link>
-            <Link href="#features" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-              Features
-            </Link>
-            <Link href="#about" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-              About
-            </Link>
-            <Link href="#contact" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-              Contact
-            </Link>
+    <header className="bg-[#461A4C] px-10 py-5">
+      <div className="max-w-[1280px] mx-auto">
+        <div className="flex flex-col items-start gap-[50px]">
+          {/* Navigation */}
+          <nav className="flex flex-row justify-between items-start gap-[49px] w-[858px] h-[23px] md:w-full">
+            {/* Logo */}
+            <div className="flex flex-row items-center gap-5 w-[92px] h-[23px]">
+              <Link 
+                href="/" 
+                className="text-white font-ibm-plex font-semibold text-[22px] leading-[105.81%] tracking-[-0.02em] capitalize"
+              >
+                {companyName}
+              </Link>
+            </div>
+            
+            {/* Menu items */}
+            <div className="flex flex-row items-center gap-6">
+              {menuItems.map((menuItem, index) => (
+                <Link
+                  key={index}
+                  href={menuItem.item.url}
+                  target={menuItem.item.target}
+                  className="text-white font-manrope font-medium text-sm hover:text-gray-200 transition-colors"
+                >
+                  {menuItem.item.title}
+                </Link>
+              ))}
+            </div>
           </nav>
-          <div className="md:hidden">
-            {/* Mobile menu button */}
-            <button className="text-gray-700 hover:text-gray-900">
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+          
+          {/* Contact links */}
+          <div className="flex flex-row items-start w-[1200px] h-[14px] md:w-full">
+            {/* Aquí puedes agregar los enlaces de contacto cuando tengas los datos */}
           </div>
         </div>
       </div>
