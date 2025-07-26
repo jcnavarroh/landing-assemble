@@ -10,7 +10,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
   const { contact_links: contactLinks, footer_title: footerTitle } = data;
 
   return (
-    <footer className="bg-background-3">
+    <footer className="bg-background-3" role="contentinfo">
       {/* Desktop version */}
       <div data-testid="desktop-footer" className="desktop-only flex flex-row items-start px-figma-4xl py-[31px] gap-figma-sm w-[1280px] h-[221px] mx-auto">
         

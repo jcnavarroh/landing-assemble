@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "test:a11y": "jest --testPathPatterns=a11y --testNamePattern=accessibility",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "next": "15.4.4",
@@ -21,6 +23,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^30.0.0",
+    "@types/jest-axe": "^3.5.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -30,6 +33,7 @@
     "eslint-config-next": "15.4.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^30.0.5",
+    "jest-axe": "^10.0.0",
     "jest-environment-jsdom": "^30.0.5",
     "postcss": "^8.4.0",
     "tailwindcss": "^3.4.0",

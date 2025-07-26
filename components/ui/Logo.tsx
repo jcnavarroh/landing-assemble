@@ -17,7 +17,11 @@ const Logo: React.FC<LogoProps> = ({
   };
 
   return (
-    <Link href="/" className={`font-bold text-gray-900 hover:text-blue-600 transition-colors ${sizeClasses[size]} ${className}`}>
+    <Link 
+      href="/" 
+      className={`font-bold text-gray-900 hover:text-blue-600 transition-colors ${sizeClasses[size]} ${className}`}
+      aria-label="Assemble - Go to homepage"
+    >
       <span className="text-blue-600">A</span>ssemble
     </Link>
   );

@@ -65,7 +65,11 @@ export default function ErrorPage({
     }
 
     return (
-      <button className={buttonClass} onClick={action.onClick}>
+      <button 
+        className={buttonClass} 
+        onClick={action.onClick}
+        aria-label={`${action.label} - ${isPrimary ? 'Primary action' : 'Secondary action'}`}
+      >
         {content}
       </button>
     );

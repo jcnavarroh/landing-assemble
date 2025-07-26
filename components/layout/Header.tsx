@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
       {/* Desktop version */}
       <div data-testid="desktop-header" className="desktop-only flex flex-col items-start px-figma-4xl py-figma-lg gap-figma-4xl w-[1280px] h-[157px] mx-auto">
         {/* Navigation */}
-        <nav className="flex flex-row justify-between items-start gap-[49px] w-[858px] h-[23px]" role="navigation" aria-label="Main navigation">
+        <nav className="flex flex-row justify-between items-start gap-[49px] w-[858px] h-[23px]" role="navigation" aria-label="Desktop main navigation">
           {/* Logo */}
           <div className="flex flex-row items-center gap-[20px] w-[92px] h-[23px]">
             <Link
@@ -47,7 +47,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
         </nav>
 
         {/* Contact links */}
-        <nav className="flex flex-row items-end justify-end w-[1200px] h-[14px] flex-none order-1 flex-grow-0" role="navigation" aria-label="Contact links">
+        <div className="flex flex-row items-end justify-end w-[1200px] h-[14px] flex-none order-1 flex-grow-0" aria-label="Contact links">
           <div className="flex flex-row items-center gap-figma-xl">
             {contactLinks && contactLinks.map((contactLink, index) => (
               <Link
@@ -60,13 +60,13 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
               </Link>
             ))}
           </div>
-        </nav>
+        </div>
       </div>
 
       {/* Mobile version */}
       <div data-testid="mobile-header" className="mobile-only flex flex-col justify-center items-start px-figma-sm py-figma-lg pb-figma-4xl gap-figma-4xl w-[375px] max-w-[900px] h-[157px] mx-auto">
         {/* Navigation */}
-        <nav className="flex flex-row justify-between items-start gap-[49px] w-[335px] h-[23px]" role="navigation" aria-label="Main navigation">
+        <nav className="flex flex-row justify-between items-start gap-[49px] w-[335px] h-[23px]" role="navigation" aria-label="Mobile main navigation">
           {/* Logo */}
           <div className="flex flex-row items-center gap-[20px] w-[92px] h-[23px]">
             <Link
@@ -94,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
         </nav>
 
         {/* Contact links */}
-        <nav className="flex flex-row items-start w-[335px] h-[14px] flex-none order-1 flex-grow-0" role="navigation" aria-label="Contact links">
+        <div className="flex flex-row items-start w-[335px] h-[14px] flex-none order-1 flex-grow-0" aria-label="Contact links">
           <div className="flex flex-row items-center gap-figma-xl">
             {contactLinks && contactLinks.map((contactLink, index) => (
               <Link
@@ -107,7 +107,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
               </Link>
             ))}
           </div>
-        </nav>
+        </div>
       </div>
     </header>
   );
