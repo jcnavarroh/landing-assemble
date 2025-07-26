@@ -22,7 +22,7 @@ export default async function Home() {
     
     return (
       <SuspenseWrapper>
-        <div className="min-h-screen">
+        <div className="min-h-screen items-center">
           <Hero data={pageData.acf?.body?.hero_image} />
           <Reliable data={pageData.acf?.body?.row_1} />
           <FirstClass data={pageData.acf?.body?.row_2} />

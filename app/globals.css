@@ -2,8 +2,135 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import IBM Plex Sans font */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+/* Importar fuentes de Figma */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Roboto+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
-/* Import Manrope font */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+/* Estilos base de Figma */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    line-height: 109.01%;
+    color: #5C4F3A;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Clases de utilidad específicas de Figma */
+@layer components {
+  /* Container principal de Figma */
+  .figma-container {
+    @apply flex flex-col items-start px-figma-4xl py-figma-3xl pb-figma-7xl gap-figma-6xl w-figma-container h-figma-container bg-background-2 relative;
+  }
+
+  /* Tipografía de Figma */
+  .figma-heading-1 {
+    @apply w-figma-content h-figma-heading1 font-manrope font-normal text-figma-2xl text-accent-1 capitalize leading-[105.81%] tracking-[-0.02em] flex items-center;
+  }
+
+  .figma-heading-2 {
+    @apply w-figma-content h-figma-heading2 font-manrope font-normal text-figma-xl text-accent-1 leading-[109.01%] tracking-[-0.02em] flex items-center;
+  }
+
+  .figma-heading-3 {
+    @apply w-figma-content h-figma-heading3 font-manrope font-normal text-figma-lg text-accent-1 leading-[109.01%] tracking-[-0.02em] flex items-center;
+  }
+
+  .figma-paragraph {
+    @apply w-figma-content h-figma-paragraph font-manrope font-normal text-figma-base text-accent-1 leading-[109.01%] flex items-center;
+  }
+
+  .figma-link {
+    @apply w-figma-content h-figma-link font-manrope font-medium text-figma-xs text-accent-1 leading-[115%] flex items-center;
+  }
+
+  .figma-label {
+    @apply w-figma-content h-figma-text font-figtree font-normal text-figma-sm text-text-black leading-[120%] flex items-center tracking-[-0.02em];
+  }
+
+  /* Botones de Figma */
+  .figma-button-default {
+    @apply flex flex-col justify-center items-center px-figma-xl py-figma-sm gap-figma-md w-figma-button h-figma-button bg-accent-3 rounded-figma-sm;
+  }
+
+  .figma-button-hover {
+    @apply flex flex-col justify-center items-center px-figma-xl py-figma-sm gap-figma-md w-figma-button h-figma-button bg-link-hover rounded-figma-sm;
+  }
+
+  .figma-button-text {
+    @apply w-[113.33px] h-[26px] font-manrope font-medium text-figma-xs leading-[115%] text-center text-background-1;
+  }
+
+  /* Enlaces de Figma */
+  .figma-link-default {
+    @apply w-[45px] h-[13px] font-manrope font-medium text-figma-xs leading-[115%] text-link-default;
+  }
+
+  .figma-link-hover {
+    @apply w-[45px] h-[13px] font-manrope font-medium text-figma-xs leading-[115%] underline text-link-default;
+  }
+
+  /* Iconos de Figma */
+  .figma-icon {
+    @apply w-figma-icon h-figma-icon;
+  }
+
+  /* Imágenes de Figma */
+  .figma-image {
+    @apply w-figma-image h-figma-image bg-figma-gradient;
+  }
+
+  .figma-image-link {
+    @apply w-figma-image h-[19px] font-roboto-mono font-normal text-figma-sm leading-[140%] flex items-center tracking-[-0.03em] underline text-text-black;
+  }
+
+  /* Separadores de Figma */
+  .figma-divider {
+    @apply flex flex-row items-center py-figma-3xl gap-figma-sm w-figma-content h-figma-label border-t border-divider;
+  }
+
+  /* Colores de muestra de Figma */
+  .figma-color-purple {
+    @apply w-[103px] h-[103px] bg-purple-figma;
+  }
+
+  .figma-color-white {
+    @apply w-[103px] h-[103px] bg-background-2 border border-text-black;
+  }
+
+  .figma-color-background-1 {
+    @apply w-[103px] h-[103px] bg-background-1 border border-text-heading;
+  }
+
+  .figma-color-accent-3 {
+    @apply w-[103px] h-[103px] bg-accent-3;
+  }
+
+  .figma-color-background-5 {
+    @apply w-[103px] h-[103px] bg-background-5;
+  }
+
+  .figma-color-black {
+    @apply w-[103px] h-[103px] bg-text-black;
+  }
+}
+
+/* Utilidades responsivas */
+@layer utilities {
+  .mobile-only {
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .desktop-only {
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+}

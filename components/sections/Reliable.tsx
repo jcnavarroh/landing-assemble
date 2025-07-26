@@ -25,9 +25,9 @@ const Reliable: React.FC<ReliableProps> = ({ data }) => {
   const benefits = data?.image_tile || reliableData.benefits;
 
   return (
-    <section className="bg-white">
+    <section className="bg-white top-[-160px] md:top-[-175px] relative mb-[-160px] md:mb-[-175px]">
       {/* Desktop version */}
-      <div className="hidden md:flex flex-col items-center px-10 pt-20 gap-8 w-[1280px] h-[672.51px] mx-auto">
+      <div className="hidden md:flex flex-col items-center px-10 pt-20 gap-8 w-[1280px] h-[672.51px] mx-auto bg-background-2">
         
         {/* The Most Reliable App - Title */}
         <div className="flex flex-col justify-center items-center gap-1 w-[481px] h-11">

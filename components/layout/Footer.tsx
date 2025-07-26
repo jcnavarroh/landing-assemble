@@ -18,9 +18,9 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
   const footerTitle = data?.footer_title || footerData.footer_title;
 
   return (
-    <footer className="bg-[#EDEDED]">
+    <footer className="bg-background-3">
       {/* Desktop version */}
-      <div className="hidden md:flex flex-row items-start px-10 py-[31px] gap-[10px] w-[1280px] h-[221px] mx-auto">
+      <div className="desktop-only flex flex-row items-start px-figma-4xl py-[31px] gap-figma-sm w-[1280px] h-[221px] mx-auto">
         
         {/* Left side footer container */}
         <div className="w-[1023px] h-[26px] relative flex-none order-0 flex-grow">
@@ -33,7 +33,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
         </div>
         
         {/* Right side footer container */}
-        <div className="flex flex-col justify-between items-start gap-[152px] w-[167px] h-[144px] flex-none order-1 flex-grow-0">
+        <div className="flex flex-col justify-between items-start w-[167px] h-[144px] flex-none order-1 flex-grow-0">
           
           {/* Contact details */}
           <div className="flex flex-col items-start gap-[12.64px] w-[167px] h-[62px]">
@@ -64,7 +64,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
       </div>
 
       {/* Mobile version */}
-      <div className="md:hidden flex flex-row items-start px-5 py-[31px] gap-[10px] w-[375px] h-[221px] mx-auto">
+      <div className="mobile-only flex flex-row items-start px-figma-sm py-[31px] gap-figma-sm w-[375px] h-[221px] mx-auto">
         
         {/* Left side footer container */}
         <div className="w-[225px] h-[20px] relative flex-none order-0 flex-grow-0">
@@ -77,17 +77,17 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
         </div>
         
         {/* Right side footer container */}
-        <div className="flex flex-col justify-between items-start gap-[152px] w-[100px] h-[144px] flex-none order-1 flex-grow">
+        <div className="flex flex-col justify-between items-start w-[100px] h-[144px] flex-none order-1 flex-grow-1">
           
           {/* Contact details */}
-          <div className="flex flex-col items-start gap-[12.64px] w-[167px] h-[62px]">
-            <div className="flex flex-col items-start gap-[2px] w-[167px] h-[62px]">
+          <div className="flex flex-col items-start gap-[12.64px] w-fith-[62px]">
+            <div className="flex flex-col items-start gap-[2px] w-fit h-[62px]">
               {contactLinks.map((contactLink, index) => (
                 <Link 
                   key={index}
                   href={contactLink.item.url} 
                   target={contactLink.item.target}
-                  className="w-[167px] h-[14px] font-manrope font-medium text-[11px] leading-[125%] text-black hover:text-gray-600 transition-colors"
+                  className="w-fit h-[14px] font-manrope font-medium text-[11px] leading-[125%] text-black hover:text-gray-600 transition-colors"
                 >
                   {contactLink.item.title}
                 </Link>
@@ -99,7 +99,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
           <div className="flex flex-col items-start gap-[2px] w-[100px] h-[14px]">
             <Link 
               href="#" 
-              className="w-[38px] h-[14px] font-manrope font-medium text-[11px] leading-[125%] text-[#777777] hover:text-gray-600 transition-colors"
+              className="w-[38px] h-[14px] font-manrope font-medium text-[11px] leading-[125%] text-text-paragraph hover:text-gray-600 transition-colors"
             >
               Privacy
             </Link>
