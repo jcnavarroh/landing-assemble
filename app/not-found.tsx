@@ -2,6 +2,9 @@
 
 import ErrorPage from '../components/ui/ErrorPage';
 
+// Force dynamic rendering to avoid static generation issues in CI
+export const dynamic = 'force-dynamic';
+
 export default function NotFound() {
   return (
     <ErrorPage

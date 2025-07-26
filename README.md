@@ -92,7 +92,7 @@ After a thorough code review, the project has been evaluated as **excellent**, m
 - **Comprehensive Documentation**: Detailed guides and examples
 - **Hot Reload**: Fast development iteration
 
-## 🚀 Production Recommendations
+## 🚀 Production Recommendations (FUTURE)
 
 ### Performance Enhancements
 
@@ -178,7 +178,7 @@ NEXT_PUBLIC_SITE_URL=https://yourdomain.com
 NODE_ENV=production
 ```
 
-#### 2. **Build Optimization**
+#### 2. **Build Optimization (FUTURE)**
 ```json
 // package.json
 {
@@ -870,15 +870,6 @@ jobs:
     args: --severity-threshold=high
 ```
 
-##### 3. **Performance Monitoring**
-```yaml
-# Add Lighthouse CI for performance monitoring
-- name: Run Lighthouse CI
-  run: |
-    npm install -g @lhci/cli@0.12.x
-    lhci autorun
-```
-
 #### Monitoring and Notifications
 
 ##### 1. **Workflow Notifications**
@@ -886,12 +877,6 @@ jobs:
 - **Failure**: Immediate alerts on build failures
 - **Status**: Real-time status updates in PRs
 
-##### 2. **Performance Metrics**
-- **Build Time**: Track and optimize build duration
-- **Test Coverage**: Monitor test coverage trends
-- **Bundle Size**: Track JavaScript bundle size changes
-
-#### Troubleshooting
 
 ##### Common Issues and Solutions
 
@@ -922,7 +907,7 @@ jobs:
    npm run lint -- components/
    ```
 
-#### Best Practices
+#### Best Practices (FUTURE)
 
 1. **Commit Messages**: Use conventional commits for better workflow integration
 2. **Branch Strategy**: Follow GitFlow or similar branching strategy
