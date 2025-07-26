@@ -6,15 +6,9 @@ import Button from '../ui/Button';
 import { HeroProps } from '../../types';
 
 const Hero: React.FC<HeroProps> = ({ data }) => {
-  // Fallback data si no hay datos del API
-  const heroData = {
-    title: "Connect, Collaborate, Innovate",
-    subtitle: "Assemble is the platform that revolutionizes how we work together. Organize projects, manage teams and achieve extraordinary results.",
-    cta_primary: "Get Started Now",
-    cta_secondary: "View Demo",
-    trusted_by: "Trusted by",
-    logos: ["Logo 1", "Logo 2", "Logo 3", "Logo 4"]
-  };
+  if (!data) {
+    return null;
+  }
 
   return (
     <section className="bg-background-2">
@@ -23,7 +17,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
         
         {/* Header image */}
         <div className="w-[1200px] h-[635px] rounded-figma-xl flex items-center justify-center relative overflow-hidden">
-          {data?.desktop_image ? (
+          {data.desktop_image ? (
             <Image
               src={data.desktop_image.url}
               alt={data.desktop_image.alt || "Hero background"}
@@ -36,19 +30,19 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
             <div className="bg-gradient-to-br from-purple-400 to-purple-600 w-full h-full flex items-center justify-center">
               <div className="text-center text-white">
                 <h1 className="text-5xl md:text-7xl font-bold mb-6">
-                  {heroData.title.split(', ').map((part, index) => (
+                  {data.title.split(', ').map((part, index) => (
                     <React.Fragment key={index}>
                       {index === 1 ? (
                         <span className="block text-yellow-300">{part}</span>
                       ) : (
                         part
                       )}
-                      {index < heroData.title.split(', ').length - 1 && ', '}
+                      {index < data.title.split(', ').length - 1 && ', '}
                     </React.Fragment>
                   ))}
                 </h1>
                 <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-purple-100">
-                  {heroData.subtitle}
+                  {data.subtitle}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
@@ -56,14 +50,14 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
                     size="large"
                     onClick={() => console.log('Get started now')}
                   >
-                    {heroData.cta_primary}
+                    {data.cta_primary}
                   </Button>
                   <Button 
                     variant="secondary" 
                     size="large"
                     onClick={() => console.log('View demo')}
                   >
-                    {heroData.cta_secondary}
+                    {data.cta_secondary}
                   </Button>
                 </div>
               </div>
@@ -75,9 +69,9 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
         <div className="flex flex-row flex-wrap items-start py-figma-3xl w-[1200px] h-[89.64px] rounded-figma-lg bg-background-3">
           <div className="flex items-center justify-center w-full h-full">
             <div className="flex space-x-figma-3xl items-center">
-              <div className="text-figma-2xl font-bold text-text-paragraph">{heroData.trusted_by}</div>
+              <div className="text-figma-2xl font-bold text-text-paragraph">{data.trusted_by}</div>
               <div className="flex space-x-figma-3xl">
-                {heroData.logos.map((logo, index) => (
+                {data.logos.map((logo, index) => (
                   <div 
                     key={index}
                     className="w-16 h-8 bg-background-5 rounded flex items-center justify-center text-figma-xs text-text-paragraph"
@@ -96,7 +90,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
         
         {/* Header image */}
         <div className="w-[335px] h-[400px] rounded-figma-xl flex items-center justify-center relative overflow-hidden">
-          {data?.mobile_image ? (
+          {data.mobile_image ? (
             <Image
               src={data.mobile_image.url}
               alt={data.mobile_image.alt || "Hero background mobile"}
@@ -109,19 +103,19 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
             <div className="bg-gradient-to-br from-purple-400 to-purple-600 w-full h-full flex items-center justify-center">
               <div className="text-center text-white px-4">
                 <h1 className="text-3xl font-bold mb-4">
-                  {heroData.title.split(', ').map((part, index) => (
+                  {data.title.split(', ').map((part, index) => (
                     <React.Fragment key={index}>
                       {index === 1 ? (
                         <span className="block text-yellow-300">{part}</span>
                       ) : (
                         part
                       )}
-                      {index < heroData.title.split(', ').length - 1 && ', '}
+                      {index < data.title.split(', ').length - 1 && ', '}
                     </React.Fragment>
                   ))}
                 </h1>
                 <p className="text-lg mb-6 text-purple-100">
-                  {heroData.subtitle}
+                  {data.subtitle}
                 </p>
                 <div className="flex flex-col gap-3">
                   <Button 
@@ -129,14 +123,14 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
                     size="large"
                     onClick={() => console.log('Get started now')}
                   >
-                    {heroData.cta_primary}
+                    {data.cta_primary}
                   </Button>
                   <Button 
                     variant="secondary" 
                     size="large"
                     onClick={() => console.log('View demo')}
                   >
-                    {heroData.cta_secondary}
+                    {data.cta_secondary}
                   </Button>
                 </div>
               </div>
@@ -148,9 +142,9 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
         <div className="flex flex-row flex-wrap items-start py-[34px] w-[335px] h-[158.61px] rounded-figma-lg bg-background-3">
           <div className="flex items-center justify-center w-full h-full">
             <div className="flex space-x-figma-lg items-center">
-              <div className="text-figma-lg font-bold text-text-paragraph">{heroData.trusted_by}</div>
+              <div className="text-figma-lg font-bold text-text-paragraph">{data.trusted_by}</div>
               <div className="flex space-x-figma-lg">
-                {heroData.logos.map((logo, index) => (
+                {data.logos.map((logo, index) => (
                   <div 
                     key={index}
                     className="w-12 h-6 bg-background-5 rounded flex items-center justify-center text-figma-xs text-text-paragraph"

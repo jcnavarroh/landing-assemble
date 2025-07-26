@@ -59,6 +59,8 @@ const config: Config = {
         'figma-5xl': '50px',
         'figma-6xl': '74px',
         'figma-7xl': '100px',
+        'figma-15': '15px',
+        'figma-21.33': '21.33px',
       },
       
       // Dimensiones específicas de Figma
@@ -68,6 +70,10 @@ const config: Config = {
         'figma-button': '133.33px',
         'figma-icon': '30px',
         'figma-image': '174px',
+        'figma-335': '335px',
+        'figma-369': '369px',
+        'figma-373.33': '373.33px',
+        'figma-481': '481px',
       },
       
       maxWidth: {
@@ -87,6 +93,13 @@ const config: Config = {
         'figma-heading3': '22px',
         'figma-paragraph': '17px',
         'figma-link': '13px',
+        'figma-30': '30px',
+        'figma-44': '44px',
+        'figma-250': '250px',
+        'figma-279': '279px',
+        'figma-288.09': '288.09px',
+        'figma-317.09': '317.09px',
+        'figma-925': '925px',
       },
       
       // Tipografía específica de Figma
@@ -97,6 +110,8 @@ const config: Config = {
         'figma-lg': ['20px', { lineHeight: '109.01%', letterSpacing: '-0.02em' }],
         'figma-xl': ['28px', { lineHeight: '109.01%', letterSpacing: '-0.02em' }],
         'figma-2xl': ['36px', { lineHeight: '105.81%', letterSpacing: '-0.02em' }],
+        'figma-28': ['28px', { lineHeight: '105.81%', letterSpacing: '-0.02em' }],
+        'figma-42': ['42px', { lineHeight: '105.81%', letterSpacing: '-0.02em' }],
       },
       
       // Bordes específicos de Figma
@@ -131,6 +146,8 @@ const config: Config = {
         'figma-xl': '22px',
         'figma-2xl': '50px',
         'figma-3xl': '74px',
+        'figma-15': '15px',
+        'figma-21.33': '21.33px',
       },
       
       // Padding específico de Figma

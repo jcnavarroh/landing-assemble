@@ -3,25 +3,11 @@ import Link from 'next/link';
 import { HeaderProps } from '../../types';
 
 const Header: React.FC<HeaderProps> = ({ data }) => {
-  // Fallback data si no hay datos del API
-  const headerData = {
-    company_name: "FINTECH",
-    menu_items: [
-      { item: { title: "Home", url: "/", target: "_self" } },
-      { item: { title: "About", url: "/about", target: "_self" } },
-      { item: { title: "Contact", url: "/contact", target: "_self" } }
-    ],
-    contact_links: [
-      { item: { title: "Contact", url: "/contact", target: "_self" } },
-      { item: { title: "Social", url: "/social", target: "_self" } },
-      { item: { title: "Address", url: "/address", target: "_self" } },
-      { item: { title: "Legal terms", url: "/legal", target: "_self" } }
-    ]
-  };
+  if (!data) {
+    return null;
+  }
 
-  const menuItems = data?.menu_items || headerData.menu_items;
-  const contactLinks = data?.contact_links || headerData.contact_links;
-  const companyName = data?.company_name || headerData.company_name;
+  const { menu_items: menuItems, contact_links: contactLinks, company_name: companyName } = data;
 
   return (
     <header className="bg-background-1" role="banner">

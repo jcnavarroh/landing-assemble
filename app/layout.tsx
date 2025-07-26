@@ -35,7 +35,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Obtener datos del API para Header y Footer
+  // Fetch data from the API for Header and Footer
   let headerData: HeaderType | undefined = undefined;
   let footerData: FooterType | undefined = undefined;
   let error: string | null = null;
@@ -57,7 +57,7 @@ export default async function RootLayout({
     console.error('Error loading layout data:', err);
   }
 
-  // Si hay error, mostrar ErrorComponent
+  // If there is an error, show the ErrorComponent
   if (error) {
     return (
       <html lang="en">
@@ -76,7 +76,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Skip link para accesibilidad */}
+        {/* Skip link for accessibility */}
         <a href="#main-content" className="skip-link focus-ring">
           Skip to main content
         </a>

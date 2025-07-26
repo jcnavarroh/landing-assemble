@@ -3,19 +3,11 @@ import Link from 'next/link';
 import { FooterProps } from '../../types';
 
 const Footer: React.FC<FooterProps> = ({ data }) => {
-  // Fallback data si no hay datos del API
-  const footerData = {
-    footer_title: "ACME GROUP",
-    contact_links: [
-      { item: { title: "hello@figma.com", url: "mailto:hello@figma.com", target: "_self" } },
-      { item: { title: "Instagram", url: "#", target: "_blank" } },
-      { item: { title: "X", url: "#", target: "_blank" } },
-      { item: { title: "LinkedIn", url: "#", target: "_blank" } }
-    ]
-  };
+  if (!data) {
+    return null;
+  }
 
-  const contactLinks = data?.contact_links || footerData.contact_links;
-  const footerTitle = data?.footer_title || footerData.footer_title;
+  const { contact_links: contactLinks, footer_title: footerTitle } = data;
 
   return (
     <footer className="bg-background-3">

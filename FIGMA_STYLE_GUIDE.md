@@ -1,16 +1,16 @@
-# Guía de Estilos de Figma
+# Figma Style Guide
 
-Esta guía documenta las clases y configuraciones específicas de Figma implementadas en el proyecto.
+This guide documents the Figma-specific classes and configurations implemented in the project.
 
-## Configuración de Tailwind CSS
+## Tailwind CSS Configuration
 
-### Fuentes
+### Fonts
 - `font-figtree` - Figtree (400, 500, 600)
 - `font-manrope` - Manrope (400, 500, 600, 700)
 - `font-roboto-mono` - Roboto Mono (400)
 - `font-ibm-plex` - IBM Plex Sans (400, 500, 600, 700)
 
-### Colores
+### Colors
 - `accent-1` - #5C4F3A (Accent/Accent 1)
 - `accent-3` - #AAE8FD (Accent/Accent 3)
 - `background-1` - #461A4C (Background/Background 1)
@@ -25,9 +25,9 @@ Esta guía documenta las clases y configuraciones específicas de Figma implemen
 - `divider` - #E9E9E9 (Divider Lines)
 - `link-default` - #D2FD9C (Link default)
 - `link-hover` - #77EDFF (Link hover)
-- `purple-figma` - #5C137E (Purple específico de Figma)
+- `purple-figma` - #5C137E (Figma-specific Purple)
 
-### Espaciados
+### Spacing
 - `figma-xs` - 8px
 - `figma-sm` - 10px
 - `figma-md` - 14px
@@ -40,14 +40,14 @@ Esta guía documenta las clases y configuraciones específicas de Figma implemen
 - `figma-6xl` - 74px
 - `figma-7xl` - 100px
 
-### Dimensiones
+### Dimensions
 - `figma-container` - 1200px
 - `figma-content` - 1160px
 - `figma-button` - 133.33px
 - `figma-icon` - 30px
 - `figma-image` - 174px
 
-### Alturas
+### Heights
 - `figma-container` - 2226.95px
 - `figma-label` - 62px
 - `figma-button` - 120px
@@ -60,7 +60,7 @@ Esta guía documenta las clases y configuraciones específicas de Figma implemen
 - `figma-paragraph` - 17px
 - `figma-link` - 13px
 
-### Tipografía
+### Typography
 - `text-figma-xs` - 11.5px (115% line-height, -0.02em letter-spacing)
 - `text-figma-sm` - 12px (120% line-height, -0.02em letter-spacing)
 - `text-figma-base` - 16px (109.01% line-height)
@@ -68,7 +68,7 @@ Esta guía documenta las clases y configuraciones específicas de Figma implemen
 - `text-figma-xl` - 28px (109.01% line-height, -0.02em letter-spacing)
 - `text-figma-2xl` - 36px (105.81% line-height, -0.02em letter-spacing)
 
-### Bordes
+### Borders
 - `border-figma-thin` - 1px
 - `border-figma-medium` - 2px
 - `rounded-figma-sm` - 4px
@@ -76,16 +76,16 @@ Esta guía documenta las clases y configuraciones específicas de Figma implemen
 - `rounded-figma-lg` - 10px
 - `rounded-figma-xl` - 20px
 
-## Clases de Componentes
+## Component Classes
 
-### Container Principal
+### Main Container
 ```html
 <div class="figma-container">
-  <!-- Contenido principal -->
+  <!-- Main content -->
 </div>
 ```
 
-### Tipografía
+### Typography
 ```html
 <h1 class="figma-heading-1">Heading 1</h1>
 <h2 class="figma-heading-2">Heading 2</h2>
@@ -95,7 +95,7 @@ Esta guía documenta las clases y configuraciones específicas de Figma implemen
 <label class="figma-label">Label text</label>
 ```
 
-### Botones
+### Buttons
 ```html
 <button class="figma-button-default">
   <div class="figma-icon"></div>
@@ -108,31 +108,31 @@ Esta guía documenta las clases y configuraciones específicas de Figma implemen
 </button>
 ```
 
-### Enlaces
+### Links
 ```html
 <a class="figma-link-default">Default Link</a>
 <a class="figma-link-hover">Hover Link</a>
 ```
 
-### Iconos
+### Icons
 ```html
 <div class="figma-icon"></div>
 ```
 
-### Imágenes
+### Images
 ```html
 <div class="figma-image"></div>
 <a class="figma-image-link">Image Link</a>
 ```
 
-### Separadores
+### Dividers
 ```html
 <div class="figma-divider">
   <span>Section Title</span>
 </div>
 ```
 
-### Colores de Muestra
+### Color Samples
 ```html
 <div class="figma-color-purple"></div>
 <div class="figma-color-white"></div>
@@ -142,23 +142,23 @@ Esta guía documenta las clases y configuraciones específicas de Figma implemen
 <div class="figma-color-black"></div>
 ```
 
-## Utilidades Responsivas
+## Responsive Utilities
 
 ```html
-<div class="desktop-only">Solo visible en desktop</div>
-<div class="mobile-only">Solo visible en mobile</div>
+<div class="desktop-only">Only visible on desktop</div>
+<div class="mobile-only">Only visible on mobile</div>
 ```
 
-## Ejemplo de Uso Completo
+## Full Usage Example
 
 ```html
 <div class="figma-container">
-  <!-- Separador de sección -->
+  <!-- Section divider -->
   <div class="figma-divider">
     <span class="figma-label">Text Styles</span>
   </div>
   
-  <!-- Contenido de texto -->
+  <!-- Text content -->
   <div class="flex flex-col gap-figma-5xl w-figma-content h-[321px]">
     <h1 class="figma-heading-1">Heading 1</h1>
     <h2 class="figma-heading-2">Heading 2</h2>
@@ -167,12 +167,12 @@ Esta guía documenta las clases y configuraciones específicas de Figma implemen
     <a class="figma-link">Link text</a>
   </div>
   
-  <!-- Separador de sección -->
+  <!-- Section divider -->
   <div class="figma-divider">
     <span class="figma-label">Color</span>
   </div>
   
-  <!-- Paleta de colores -->
+  <!-- Color palette -->
   <div class="flex gap-figma-lg">
     <div class="figma-color-purple"></div>
     <div class="figma-color-white"></div>
@@ -182,12 +182,12 @@ Esta guía documenta las clases y configuraciones específicas de Figma implemen
     <div class="figma-color-black"></div>
   </div>
   
-  <!-- Separador de sección -->
+  <!-- Section divider -->
   <div class="figma-divider">
     <span class="figma-label">Buttons</span>
   </div>
   
-  <!-- Botones -->
+  <!-- Buttons -->
   <div class="flex gap-figma-2xl">
     <button class="figma-button-default">
       <div class="figma-icon"></div>
@@ -201,17 +201,17 @@ Esta guía documenta las clases y configuraciones específicas de Figma implemen
 </div>
 ```
 
-## Notas Importantes
+## Important Notes
 
-1. **Fuentes**: Asegúrate de que las fuentes estén cargadas correctamente
-2. **Dimensiones**: Las dimensiones están basadas en el diseño de Figma de 1200px de ancho
-3. **Responsive**: Usa las clases `desktop-only` y `mobile-only` para controlar la visibilidad
-4. **Colores**: Todos los colores coinciden exactamente con la paleta de Figma
-5. **Espaciados**: Los espaciados están basados en la escala de Figma
+1. **Fonts**: Make sure the fonts are loaded correctly.
+2. **Dimensions**: Dimensions are based on the 1200px wide Figma design.
+3. **Responsive**: Use the `desktop-only` and `mobile-only` classes to control visibility.
+4. **Colors**: All colors match the Figma palette exactly.
+5. **Spacing**: Spacing is based on the Figma scale.
 
-## Estructura del Container Principal
+## Main Container Structure
 
-El container principal de Figma tiene las siguientes propiedades:
+The main Figma container has the following properties:
 - `display: flex`
 - `flex-direction: column`
 - `align-items: flex-start`
@@ -222,4 +222,4 @@ El container principal de Figma tiene las siguientes propiedades:
 - `height: 100%`
 - `background: #FFFFFF`
 
-Esto se implementa con la clase `figma-container`. 
+This is implemented with the `figma-container` class. 

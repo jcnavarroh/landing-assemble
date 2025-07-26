@@ -35,7 +35,7 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* H1 principal para accesibilidad */}
+      {/* Main H1 for accessibility */}
       <h1 className="sr-only">
         Assemble - Connect, Collaborate, Innovate
       </h1>
