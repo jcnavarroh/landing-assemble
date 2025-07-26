@@ -103,6 +103,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
       - name: Deploy to staging environment
         run: |
           echo "Deploying to staging/preview environment"
@@ -118,6 +121,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
 
       - name: Deploy to production environment
         run: |
