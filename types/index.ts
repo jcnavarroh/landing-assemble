@@ -112,6 +112,7 @@ export interface Item {
 export interface Header {
   company_name: string;
   menu_items:   ContactLink[];
+  contact_links?: ContactLink[];
 }
 
 // API Response types
