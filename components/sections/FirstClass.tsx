@@ -52,7 +52,7 @@ const FirstClass: React.FC<FirstClassProps> = ({ data }) => {
           <div className="flex flex-col items-center gap-[15px] w-[373.33px] h-[317.09px] flex-1">
             
             {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[373.33px] h-[288.09px] bg-background-1 rounded-figma-lg relative overflow-hidden">
+            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[373.33px] h-[288.09px] bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
               {features[0]?.image ? (
                 <Image
                   src={features[0].image.url}
@@ -79,7 +79,7 @@ const FirstClass: React.FC<FirstClassProps> = ({ data }) => {
           <div className="flex flex-col items-center gap-[15px] w-[373.33px] h-[317.09px] flex-1">
             
             {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[373.33px] h-[288.09px] bg-background-1 rounded-figma-lg relative overflow-hidden">
+            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[373.33px] h-[288.09px] bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
               {features[1]?.image ? (
                 <Image
                   src={features[1].image.url}
@@ -106,7 +106,7 @@ const FirstClass: React.FC<FirstClassProps> = ({ data }) => {
           <div className="flex flex-col items-center gap-[15px] w-[373.33px] h-[317.09px] flex-1">
             
             {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[373.33px] h-[288.09px] bg-background-1 rounded-figma-lg relative overflow-hidden">
+            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[373.33px] h-[288.09px] bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
               {features[2]?.image ? (
                 <Image
                   src={features[2].image.url}
@@ -152,7 +152,7 @@ const FirstClass: React.FC<FirstClassProps> = ({ data }) => {
           <div className="flex flex-col items-center gap-[15px] w-[335px] h-[279px]">
             
             {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[335px] h-[250px] bg-background-1 rounded-figma-lg relative overflow-hidden">
+            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[335px] h-[250px] bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
               {features[0]?.image ? (
                 <Image
                   src={features[0].image.url}
@@ -179,7 +179,7 @@ const FirstClass: React.FC<FirstClassProps> = ({ data }) => {
           <div className="flex flex-col items-center gap-[15px] w-[335px] h-[279px]">
             
             {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[335px] h-[250px] bg-background-1 rounded-figma-lg relative overflow-hidden">
+            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[335px] h-[250px] bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
               {features[1]?.image ? (
                 <Image
                   src={features[1].image.url}
@@ -206,7 +206,7 @@ const FirstClass: React.FC<FirstClassProps> = ({ data }) => {
           <div className="flex flex-col items-center gap-[15px] w-[335px] h-[279px]">
             
             {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[335px] h-[250px] bg-background-1 rounded-figma-lg relative overflow-hidden">
+            <div className="flex flex-col justify-center items-center gap-[21.33px] w-[335px] h-[250px] bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
               {features[2]?.image ? (
                 <Image
                   src={features[2].image.url}
