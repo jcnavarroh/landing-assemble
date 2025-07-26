@@ -21,8 +21,14 @@ export interface Body {
 }
 
 export interface HeroImage {
-  desktop_image: Image;
-  mobile_image:  Image;
+  desktop_image?: Image;
+  mobile_image?:  Image;
+  title: string;
+  subtitle: string;
+  cta_primary: string;
+  cta_secondary: string;
+  trusted_by: string;
+  logos: string[];
 }
 
 export interface Image {
@@ -112,6 +118,7 @@ export interface Item {
 export interface Header {
   company_name: string;
   menu_items:   ContactLink[];
+  contact_links?: ContactLink[];
 }
 
 // API Response types

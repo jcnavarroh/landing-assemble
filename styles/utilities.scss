@@ -1,0 +1,224 @@
+// SCSS Utilities and Mixins
+// This file contains reusable utility classes and mixins for the project
+
+// Import Tailwind directives
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Mixins for common patterns
+@mixin flex-center {
+  @apply flex items-center justify-center;
+}
+
+@mixin flex-between {
+  @apply flex items-center justify-between;
+}
+
+@mixin button-base {
+  @apply inline-flex items-center gap-figma-sm px-figma-xl py-figma-md font-manrope font-semibold rounded-figma-lg transition-all duration-300;
+}
+
+@mixin gradient-bg {
+  @apply bg-gradient-to-br from-background-1 via-background-2 to-background-4;
+}
+
+@mixin text-gradient {
+  background: linear-gradient(135deg, theme('colors.accent.1'), theme('colors.accent.3'));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Reusable utility classes using @apply
+@layer components {
+  // Layout utilities
+  .container-figma {
+    @apply max-w-figma-container mx-auto px-figma-lg;
+  }
+  
+  .section-padding {
+    @apply py-figma-xl;
+  }
+  
+  .card-base {
+    @apply bg-background-2 rounded-figma-lg shadow-lg border border-divider;
+  }
+  
+  // Typography utilities
+  .heading-primary {
+    @apply text-figma-2xl font-manrope font-bold text-text-heading;
+  }
+  
+  .heading-secondary {
+    @apply text-figma-xl font-manrope font-semibold text-text-heading;
+  }
+  
+  .body-text {
+    @apply text-figma-base font-ibm-plex text-text-paragraph leading-relaxed;
+  }
+  
+  .caption-text {
+    @apply text-figma-sm font-ibm-plex text-text-paragraph;
+  }
+  
+  // Button utilities
+  .btn-primary {
+    @include button-base;
+    @apply bg-accent-1 text-text-white hover:bg-accent-3 hover:text-text-heading hover:scale-105 hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @include button-base;
+    @apply bg-transparent border-2 border-accent-1 text-accent-1 hover:bg-accent-1 hover:text-text-white hover:scale-105;
+  }
+  
+  .btn-outline {
+    @include button-base;
+    @apply bg-transparent border border-divider text-text-paragraph hover:bg-background-3 hover:border-accent-1;
+  }
+  
+  // Animation utilities
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 1s ease-out;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  // Interactive utilities
+  .hover-lift {
+    @apply transition-transform duration-300 hover:scale-105 hover:shadow-lg;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-accent-3/25;
+  }
+  
+  // Background utilities
+  .bg-gradient-primary {
+    @include gradient-bg;
+  }
+  
+  .bg-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, theme('colors.accent.3') 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, theme('colors.accent.1') 0%, transparent 50%);
+    background-size: 200px 200px;
+    background-position: 0 0, 100px 100px;
+  }
+  
+  // Border utilities
+  .border-gradient {
+    border: 2px solid transparent;
+    background: linear-gradient(theme('colors.background.2'), theme('colors.background.2')) padding-box,
+                linear-gradient(135deg, theme('colors.accent.1'), theme('colors.accent.3')) border-box;
+  }
+  
+  // Shadow utilities
+  .shadow-soft {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .shadow-medium {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+  
+  .shadow-strong {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.16);
+  }
+}
+
+// Keyframe animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+// Responsive utilities
+@layer utilities {
+  .text-responsive {
+    @apply text-figma-base sm:text-figma-lg lg:text-figma-xl;
+  }
+  
+  .padding-responsive {
+    @apply px-figma-sm py-figma-md sm:px-figma-lg sm:py-figma-xl;
+  }
+  
+  .margin-responsive {
+    @apply mx-figma-sm my-figma-md sm:mx-figma-lg sm:my-figma-xl;
+  }
+}
+
+// Accessibility utilities
+@layer utilities {
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  }
+  
+  .focus-visible {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent-3 focus:ring-offset-2;
+  }
+}
+
+// Print styles
+@media print {
+  .no-print {
+    @apply hidden;
+  }
+  
+  .print-only {
+    @apply block;
+  }
+} 

@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
+import ErrorComponent from "../components/ui/ErrorComponent";
+import LoadingComponent from "../components/ui/LoadingComponent";
 import { api } from "../services/api";
 import { Header as HeaderType, Footer as FooterType } from "../types";
 
@@ -28,39 +31,71 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default async function RootLayout({
+// Component to handle data fetching with loading state
+async function LayoutContent({ children }: { children: React.ReactNode }) {
+  // Fetch data from the API for Header and Footer
+  let headerData: HeaderType | undefined = undefined;
+  let footerData: FooterType | undefined = undefined;
+  let error: string | null = null;
+
+  try {
+    const { data: homeData, error: apiError } = await api.getHomePage();
+    
+    if (apiError) {
+      error = apiError;
+    } else if (homeData && homeData.length > 0) {
+      const pageData = homeData[0];
+      headerData = pageData.acf?.header;
+      footerData = pageData.acf?.footer;
+    } else {
+      error = "No data available";
+    }
+  } catch (err) {
+    error = err instanceof Error ? err.message : "An unexpected error occurred";
+    console.error('Error loading layout data:', err);
+  }
+
+  // If there is an error, show the ErrorComponent
+  if (error) {
+    return (
+      <ErrorComponent 
+        message={`Failed to load page data: ${error}`}
+        retry={() => window.location.reload()}
+      />
+    );
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header data={headerData} />
+      <main id="main-content" className="flex-1" role="main">
+        {children}
+      </main>
+      <Footer data={footerData} />
+    </div>
+  );
+}
+
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Obtener datos del API para Header y Footer
-  let headerData: HeaderType | undefined = undefined;
-  let footerData: FooterType | undefined = undefined;
-
-  try {
-    const { data: homeData, error } = await api.getHomePage();
-    
-    if (!error && homeData && homeData.length > 0) {
-      const pageData = homeData[0];
-      headerData = pageData.acf?.header;
-      footerData = pageData.acf?.footer;
-    }
-  } catch (error) {
-    console.error('Error loading layout data:', error);
-  }
-
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="min-h-screen flex flex-col">
-          <Header data={headerData} />
-          <main className="flex-1">
+        {/* Skip link for accessibility */}
+        <a href="#main-content" className="skip-link focus-ring">
+          Skip to main content
+        </a>
+        
+        <Suspense fallback={<LoadingComponent message="Loading Assemble..." />}>
+          <LayoutContent>
             {children}
-          </main>
-          <Footer data={footerData} />
-        </div>
+          </LayoutContent>
+        </Suspense>
       </body>
     </html>
   );

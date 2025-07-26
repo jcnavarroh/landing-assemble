@@ -5,229 +5,97 @@ import Image from 'next/image';
 import { FirstClassProps } from '../../types';
 
 const FirstClass: React.FC<FirstClassProps> = ({ data }) => {
-  // Fallback data si no hay datos del API
-  const firstClassData = {
-    title: "First class software",
-    features: [
-      {
-        title: "Safe Storage",
-        icon: "🔒",
-        image: null
-      },
-      {
-        title: "Secure",
-        icon: "🛡️",
-        image: null
-      },
-      {
-        title: "Earn Interest",
-        icon: "💰",
-        image: null
-      }
-    ]
-  };
+  if (!data) {
+    return null;
+  }
 
-  const features = data?.image_tile || firstClassData.features;
+  const { title, image_tile: features } = data;
 
   return (
-    <section className="bg-white">
+    <section className="bg-background-2">
       {/* Desktop version */}
-      <div className="hidden md:flex flex-col items-center px-10 pt-12 gap-8 w-[1280px] h-[558px] mx-auto">
+      <div data-testid="desktop-first-class" className="desktop-only flex flex-col items-center px-figma-4xl pt-figma-5xl gap-figma-4xl w-[1280px] h-[558px] mx-auto">
         
         {/* Section header */}
-        <div className="flex flex-col items-center gap-2.5 w-[481px] h-11">
+        <div className="flex flex-col items-center gap-figma-sm w-figma-481 h-figma-44">
           
           {/* Headline */}
-          <div className="flex flex-col justify-center items-center gap-1 w-[481px] h-11">
-            <h2 className="w-[369px] h-11 font-manrope font-normal text-[42px] leading-[105.81%] text-center tracking-[-0.02em] capitalize text-[#461A4C]">
-              {data?.title || firstClassData.title}
+          <div className="flex flex-col justify-center items-center gap-[4.27px] w-figma-481 h-figma-44">
+            <h2 className="w-figma-369 h-figma-44 font-manrope font-normal text-figma-42 leading-[105.81%] text-center tracking-[-0.02em] capitalize text-background-1">
+              {title}
             </h2>
           </div>
         </div>
 
         {/* Icon section container */}
-        <div className="flex flex-row items-center pb-2 gap-10 w-[1200px] h-[325.09px]">
+        <div className="flex flex-row items-center pb-2 gap-figma-4xl w-[1200px] h-figma-317.09">
           
-          {/* First Icon information container */}
-          <div className="flex flex-col items-center gap-4 w-[373.33px] h-[317.09px] flex-1">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center px-5 gap-5 w-[373.33px] h-[288.09px] bg-[#461A4C] rounded-[10px] relative overflow-hidden">
-              {features[0]?.image ? (
-                <Image
-                  src={features[0].image.url}
-                  alt={features[0].image.alt || features[0].title}
-                  width={features[0].image.width || 373}
-                  height={features[0].image.height || 288}
-                  className="object-cover w-full h-full"
-                />
-              ) : (
-                <>
-                  <div className="text-6xl text-white">{features[0]?.icon || "🔒"}</div>
-                  <div className="text-4xl text-white">💾</div>
-                </>
-              )}
+          {features && features.map((feature, index) => (
+            <div key={index} className="flex flex-col items-center gap-figma-15 w-figma-373.33 h-figma-317.09 flex-1">
+              
+              {/* Icon container */}
+              <div className="flex flex-col justify-center items-center gap-figma-21.33 w-figma-373.33 h-figma-288.09 bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
+                {feature.image?.url && (
+                  <Image
+                    src={feature.image.url}
+                    alt={feature.image.alt || feature.title}
+                    width={feature.image.width || 373}
+                    height={feature.image.height || 288}
+                    className="object-cover w-full h-full"
+                  />
+                )}
+              </div>
+
+              {/* Title */}
+              <h3 className="w-figma-373.33 h-figma-text font-manrope font-medium text-figma-sm leading-[115%] text-center text-text-black">
+                {feature.title}
+              </h3>
             </div>
+          ))}
 
-            {/* Safe Storage */}
-            <h3 className="w-[373.33px] h-[14px] font-manrope font-medium text-xs leading-[115%] text-center text-black">
-              {features[0]?.title || "Safe Storage"}
-            </h3>
-          </div>
-
-          {/* Second Icon information container */}
-          <div className="flex flex-col items-center gap-4 w-[373.33px] h-[317.09px] flex-1">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center px-5 gap-5 w-[373.33px] h-[288.09px] bg-[#461A4C] rounded-[10px] relative overflow-hidden">
-              {features[1]?.image ? (
-                <Image
-                  src={features[1].image.url}
-                  alt={features[1].image.alt || features[1].title}
-                  width={features[1].image.width || 373}
-                  height={features[1].image.height || 288}
-                  className="object-cover w-full h-full"
-                />
-              ) : (
-                <>
-                  <div className="text-6xl text-white">{features[1]?.icon || "🛡️"}</div>
-                  <div className="text-4xl text-white">🔐</div>
-                </>
-              )}
-            </div>
-
-            {/* Secure */}
-            <h3 className="w-[373.33px] h-[14px] font-manrope font-medium text-xs leading-[115%] text-center text-black">
-              {features[1]?.title || "Secure"}
-            </h3>
-          </div>
-
-          {/* Third Icon information container */}
-          <div className="flex flex-col items-center gap-4 w-[373.33px] h-[317.09px] flex-1">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center px-5 gap-5 w-[373.33px] h-[288.09px] bg-[#461A4C] rounded-[10px] relative overflow-hidden">
-              {features[2]?.image ? (
-                <Image
-                  src={features[2].image.url}
-                  alt={features[2].image.alt || features[2].title}
-                  width={features[2].image.width || 373}
-                  height={features[2].image.height || 288}
-                  className="object-cover w-full h-full"
-                />
-              ) : (
-                <>
-                  <div className="text-6xl text-white">{features[2]?.icon || "💰"}</div>
-                  <div className="text-4xl text-white">📈</div>
-                </>
-              )}
-            </div>
-
-            {/* Earn Interest */}
-            <h3 className="w-[373.33px] h-[14px] font-manrope font-medium text-xs leading-[115%] text-center text-black">
-              {features[2]?.title || "Earn Interest"}
-            </h3>
-          </div>
         </div>
       </div>
 
       {/* Mobile version */}
-      <div className="md:hidden flex flex-col items-center px-5 py-12 gap-8 w-[375px] h-[1123px] mx-auto">
+      <div data-testid="mobile-first-class" className="mobile-only flex flex-col items-center px-figma-sm py-figma-5xl gap-figma-4xl w-figma-335 h-[1123px] mx-auto">
         
         {/* Section header */}
-        <div className="flex flex-col items-center gap-2.5 w-[335px] h-[30px]">
+        <div className="flex flex-col items-center gap-figma-sm w-figma-335 h-figma-30">
           
           {/* Headline */}
-          <div className="flex flex-col justify-center items-center gap-1 w-[335px] h-[30px]">
-            <h2 className="w-[335px] h-[30px] font-manrope font-normal text-[28px] leading-[105.81%] text-center tracking-[-0.02em] capitalize text-[#461A4C]">
-              {data?.title || firstClassData.title}
+          <div className="flex flex-col justify-center items-center gap-[4.27px] w-figma-335 h-figma-30">
+            <h2 className="w-figma-335 h-figma-30 font-manrope font-normal text-figma-28 leading-[105.81%] text-center tracking-[-0.02em] capitalize text-background-1">
+              {title}
             </h2>
           </div>
         </div>
 
         {/* Icon section container */}
-        <div className="flex flex-col justify-center items-start pb-2 gap-10 w-[335px] h-[925px]">
+        <div className="flex flex-col justify-center items-start pb-2 gap-figma-4xl w-figma-335 h-figma-925">
           
-          {/* First Icon information container */}
-          <div className="flex flex-col items-center gap-4 w-[335px] h-[279px]">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center px-5 gap-5 w-[335px] h-[250px] bg-[#461A4C] rounded-[10px] relative overflow-hidden">
-              {features[0]?.image ? (
-                <Image
-                  src={features[0].image.url}
-                  alt={features[0].image.alt || features[0].title}
-                  width={features[0].image.width || 335}
-                  height={features[0].image.height || 250}
-                  className="object-cover w-full h-full"
-                />
-              ) : (
-                <>
-                  <div className="text-5xl text-white">{features[0]?.icon || "🔒"}</div>
-                  <div className="text-3xl text-white">💾</div>
-                </>
-              )}
+          {features && features.map((feature, index) => (
+            <div key={index} className="flex flex-col items-center gap-figma-15 w-figma-335 h-figma-279">
+              
+              {/* Icon container */}
+              <div className="flex flex-col justify-center items-center gap-figma-21.33 w-figma-335 h-figma-250 bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
+                {feature.image?.url && (
+                  <Image
+                    src={feature.image.url}
+                    alt={feature.image.alt || feature.title}
+                    width={feature.image.width || 335}
+                    height={feature.image.height || 250}
+                    className="object-cover w-full h-full"
+                  />
+                )}
+              </div>
+
+              {/* Title */}
+              <h3 className="w-figma-335 h-figma-text font-manrope font-medium text-[11px] leading-[125%] text-center text-text-black">
+                {feature.title}
+              </h3>
             </div>
+          ))}
 
-            {/* Safe Storage */}
-            <h3 className="w-[335px] h-[14px] font-manrope font-medium text-[11px] leading-[125%] text-center text-black">
-              {features[0]?.title || "Safe Storage"}
-            </h3>
-          </div>
-
-          {/* Second Icon information container */}
-          <div className="flex flex-col items-center gap-4 w-[335px] h-[279px]">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center px-5 gap-5 w-[335px] h-[250px] bg-[#461A4C] rounded-[10px] relative overflow-hidden">
-              {features[1]?.image ? (
-                <Image
-                  src={features[1].image.url}
-                  alt={features[1].image.alt || features[1].title}
-                  width={features[1].image.width || 335}
-                  height={features[1].image.height || 250}
-                  className="object-cover w-full h-full"
-                />
-              ) : (
-                <>
-                  <div className="text-5xl text-white">{features[1]?.icon || "🛡️"}</div>
-                  <div className="text-3xl text-white">🔐</div>
-                </>
-              )}
-            </div>
-
-            {/* Secure */}
-            <h3 className="w-[335px] h-[14px] font-manrope font-medium text-[11px] leading-[125%] text-center text-black">
-              {features[1]?.title || "Secure"}
-            </h3>
-          </div>
-
-          {/* Third Icon information container */}
-          <div className="flex flex-col items-center gap-4 w-[335px] h-[279px]">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center px-5 gap-5 w-[335px] h-[250px] bg-[#461A4C] rounded-[10px] relative overflow-hidden">
-              {features[2]?.image ? (
-                <Image
-                  src={features[2].image.url}
-                  alt={features[2].image.alt || features[2].title}
-                  width={features[2].image.width || 335}
-                  height={features[2].image.height || 250}
-                  className="object-cover w-full h-full"
-                />
-              ) : (
-                <>
-                  <div className="text-5xl text-white">{features[2]?.icon || "💰"}</div>
-                  <div className="text-3xl text-white">📈</div>
-                </>
-              )}
-            </div>
-
-            {/* Earn Interest */}
-            <h3 className="w-[335px] h-[14px] font-manrope font-medium text-[11px] leading-[125%] text-center text-black">
-              {features[2]?.title || "Earn Interest"}
-            </h3>
-          </div>
         </div>
       </div>
     </section>

@@ -1,35 +1,48 @@
 import React from 'react';
-import { api } from '../../services/api';
 import Hero from '../../components/sections/Hero';
 import Reliable from '../../components/sections/Reliable';
 import FirstClass from '../../components/sections/FirstClass';
-import ErrorComponent from '../../components/ui/ErrorComponent';
-import SuspenseWrapper from '../../components/ui/SuspenseWrapper';
+import { api } from '../../services/api';
+import { WordPressPage } from '../../types';
 
-export default async function Home() {
+export default async function HomePage() {
+  let pageData: WordPressPage | null = null;
+  let error: string | null = null;
+
   try {
-    const { data: homeData, error } = await api.getHomePage();
+    const { data: homeData, error: apiError } = await api.getHomePage();
     
-    if (error) {
-      return <ErrorComponent message={error} />;
+    if (apiError) {
+      error = apiError;
+    } else if (homeData && homeData.length > 0) {
+      pageData = homeData[0];
+    } else {
+      error = "No data available";
     }
-    
-    if (!homeData || homeData.length === 0) {
-      return <ErrorComponent message="No se encontraron datos de la página" />;
-    }
-    
-    const pageData = homeData[0]; // Tomamos la primera página
-    
-    return (
-      <SuspenseWrapper>
-        <div className="min-h-screen">
-          <Hero data={pageData.acf?.body?.hero_image} />
-          <Reliable data={pageData.acf?.body?.row_1} />
-          <FirstClass data={pageData.acf?.body?.row_2} />
-        </div>
-      </SuspenseWrapper>
-    );
   } catch {
-    return <ErrorComponent message="Error al cargar la página" />;
+    error = "Failed to load page data";
   }
+
+  if (error) {
+    throw new Error(error);
+  }
+
+  if (!pageData?.acf) {
+    throw new Error("Invalid page data structure");
+  }
+
+  const { acf } = pageData;
+
+  return (
+    <>
+      {/* Main H1 for accessibility */}
+      <h1 className="sr-only">
+        Assemble - Connect, Collaborate, Innovate
+      </h1>
+      
+      <Hero data={acf.body.hero_image} />
+      <Reliable data={acf.body.row_1} />
+      <FirstClass data={acf.body.row_2} />
+    </>
+  );
 }

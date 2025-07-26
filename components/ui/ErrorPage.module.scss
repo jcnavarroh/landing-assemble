@@ -1,0 +1,520 @@
+// ErrorPage Component Styles
+// This file contains styles specific to the ErrorPage component
+
+// Component-specific variables
+$error-number-size: 120px;
+$error-number-size-mobile: 80px;
+$floating-shape-count: 3;
+
+// Error page container
+.errorPageContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #461A4C 0%, #FFFFFF 50%, #AAE8FD 100%);
+  position: relative;
+  overflow: hidden;
+  
+  // Background overlay
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(92, 79, 58, 0.1) 0%,
+      rgba(170, 232, 253, 0.05) 50%,
+      rgba(92, 79, 58, 0.1) 100%
+    );
+    pointer-events: none;
+  }
+  
+  // Animated background pattern
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(170, 232, 253, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(92, 79, 58, 0.1) 0%, transparent 50%);
+    background-size: 300px 300px;
+    background-position: 0 0, 150px 150px;
+    animation: backgroundFloat 20s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+// Content wrapper
+.errorPageContent {
+  text-align: center;
+  z-index: 10;
+  position: relative;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+// 404 Number styling with enhanced animations
+.errorNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 74px;
+  
+  .digit {
+    font-size: 42px;
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-weight: bold;
+    color: #5C4F3A;
+    position: relative;
+    display: inline-block;
+    
+    // Individual digit animations with staggered timing
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        animation: bounceIn 1.2s ease-out #{0.2 * $i}s both;
+        
+        // Add a subtle glow effect
+        &::after {
+          content: '';
+          position: absolute;
+          inset: -10px;
+          background: radial-gradient(circle, #AAE8FD 0%, transparent 70%);
+          opacity: 0;
+          animation: digitGlow 2s ease-out #{0.5 + 0.2 * $i}s both;
+          pointer-events: none;
+        }
+      }
+    }
+    
+    // Enhanced hover effects
+    &:hover {
+      animation: glitch 0.3s ease-in-out;
+      transform: scale(1.1);
+      
+      &::before {
+        content: '';
+        position: absolute;
+        inset: -5px;
+        border: 2px solid #AAE8FD;
+        border-radius: 10px;
+        animation: pulse 1s ease-in-out infinite;
+      }
+    }
+    
+    // Focus states for accessibility
+    &:focus-visible {
+      outline: 2px solid #AAE8FD;
+      outline-offset: 4px;
+      border-radius: 5px;
+    }
+  }
+}
+
+// Error message with enhanced typography
+.errorMessage {
+  margin-bottom: 74px;
+  
+  .title {
+    font-size: 36px;
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: bold;
+    color: #394508;
+    margin-bottom: 14px;
+    animation: slideInUp 0.8s ease-out 0.8s both;
+    position: relative;
+    
+    // Add decorative underline
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #5C4F3A, #AAE8FD);
+      border-radius: 2px;
+      animation: expandWidth 0.6s ease-out 1.2s both;
+    }
+  }
+  
+  .description {
+    font-size: 20px;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    color: #777777;
+    line-height: 1.6;
+    margin-bottom: 74px;
+    animation: slideInUp 0.8s ease-out 1s both;
+    max-width: 600px;
+    margin: 0 auto;
+    
+    // Add subtle text shadow for better readability
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Action buttons with enhanced interactions
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  justify-content: center;
+  align-items: center;
+  animation: slideInUp 0.8s ease-out 1.2s both;
+  
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
+  
+  .primaryButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 100px;
+    background: #5C4F3A;
+    color: #FFFFFF;
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    
+    &:hover {
+      background: #AAE8FD;
+      color: #394508;
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    // Ripple effect
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    &:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    &:hover .buttonIcon {
+      transform: translateX(4px);
+    }
+  }
+  
+  .secondaryButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 100px;
+    background: transparent;
+    border: 2px solid #5C4F3A;
+    color: #5C4F3A;
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    
+    &:hover {
+      background: #5C4F3A;
+      color: #FFFFFF;
+      transform: scale(1.05);
+    }
+    
+    // Border animation on hover
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #5C4F3A, #AAE8FD) border-box;
+      mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    &:hover::before {
+      opacity: 1;
+    }
+    
+    &:hover .buttonIcon {
+      transform: translateX(-4px);
+    }
+  }
+  
+  .buttonIcon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+}
+
+// Enhanced decorative elements
+.decorativeElements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  
+  .floatingShape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: pulse 2s ease-in-out infinite;
+    
+    @for $i from 1 through $floating-shape-count {
+      &:nth-child(#{$i}) {
+        $size: if($i == 1, 80px, if($i == 2, 60px, 40px));
+        $color: if($i == 1, #AAE8FD, if($i == 2, #5C4F3A, #AAE8FD));
+        $top: if($i == 1, 25%, if($i == 2, 75%, 50%));
+        $left: if($i == 1, 25%, if($i == 2, 75%, 50%));
+        $delay: $i * 2s;
+        
+        width: $size;
+        height: $size;
+        background: $color;
+        top: $top;
+        left: $left;
+        animation: float 6s ease-in-out infinite;
+        animation-delay: $delay;
+        
+        // Add subtle rotation
+        &::before {
+          content: '';
+          position: absolute;
+          inset: -2px;
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          border-radius: 50%;
+          animation: rotate 10s linear infinite;
+        }
+      }
+    }
+  }
+}
+
+// Keyframe animations
+@keyframes backgroundFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(-10px, -10px) rotate(1deg);
+  }
+  66% {
+    transform: translate(10px, -5px) rotate(-1deg);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes digitGlow {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 60px;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+// Enhanced responsive design
+@media (max-width: 768px) {
+  .errorNumber .digit {
+    font-size: 28px;
+    
+    &::after {
+      inset: -5px;
+    }
+  }
+  
+  .title {
+    font-size: 28px;
+    
+    &::after {
+      width: 40px;
+      height: 2px;
+    }
+  }
+  
+  .description {
+    font-size: 16px;
+    padding: 0 14px;
+  }
+  
+  .actions {
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .decorativeElements .floatingShape {
+    @for $i from 1 through $floating-shape-count {
+      &:nth-child(#{$i}) {
+        $size: if($i == 1, 60px, if($i == 2, 40px, 30px));
+        width: $size;
+        height: $size;
+      }
+    }
+  }
+}
+
+// High contrast and accessibility improvements
+@media (prefers-contrast: high) {
+  .errorPageContainer::before,
+  .errorPageContainer::after {
+    display: none;
+  }
+  
+  .floatingShape {
+    opacity: 0.6;
+    border: 2px solid currentColor;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    border: 2px solid;
+  }
+  
+  .title::after {
+    height: 4px;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .errorPageContainer::after,
+  .digit,
+  .title,
+  .description,
+  .actions,
+  .floatingShape,
+  .floatingShape::before {
+    animation: none;
+  }
+  
+  .primaryButton:hover,
+  .secondaryButton:hover {
+    transform: none;
+  }
+  
+  .buttonIcon {
+    transition: none;
+  }
+  
+  .title::after {
+    animation: none;
+    width: 60px;
+  }
+} 
