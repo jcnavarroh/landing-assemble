@@ -30,71 +30,29 @@ const FirstClass: React.FC<FirstClassProps> = ({ data }) => {
         {/* Icon section container */}
         <div className="flex flex-row items-center pb-2 gap-figma-4xl w-[1200px] h-figma-317.09">
           
-          {/* First Icon information container */}
-          <div className="flex flex-col items-center gap-figma-15 w-figma-373.33 h-figma-317.09 flex-1">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-figma-21.33 w-figma-373.33 h-figma-288.09 bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
-              {features[0]?.image.url && (
-                <Image
-                  src={features[0].image.url}
-                  alt={features[0].image.alt || features[0].title}
-                  width={features[0].image.width || 373}
-                  height={features[0].image.height || 288}
-                  className="object-cover w-full h-full"
-                />
-              )}
+          {features && features.map((feature, index) => (
+            <div key={index} className="flex flex-col items-center gap-figma-15 w-figma-373.33 h-figma-317.09 flex-1">
+              
+              {/* Icon container */}
+              <div className="flex flex-col justify-center items-center gap-figma-21.33 w-figma-373.33 h-figma-288.09 bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
+                {feature.image?.url && (
+                  <Image
+                    src={feature.image.url}
+                    alt={feature.image.alt || feature.title}
+                    width={feature.image.width || 373}
+                    height={feature.image.height || 288}
+                    className="object-cover w-full h-full"
+                  />
+                )}
+              </div>
+
+              {/* Title */}
+              <h3 className="w-figma-373.33 h-figma-text font-manrope font-medium text-figma-sm leading-[115%] text-center text-text-black">
+                {feature.title}
+              </h3>
             </div>
+          ))}
 
-            {/* Safe Storage */}
-            <h3 className="w-figma-373.33 h-figma-text font-manrope font-medium text-figma-sm leading-[115%] text-center text-text-black">
-              {features[0]?.title}
-            </h3>
-          </div>
-
-          {/* Second Icon information container */}
-          <div className="flex flex-col items-center gap-figma-15 w-figma-373.33 h-figma-317.09 flex-1">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-figma-21.33 w-figma-373.33 h-figma-288.09 bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
-              {features[1]?.image.url && (
-                <Image
-                  src={features[1].image.url}
-                  alt={features[1].image.alt || features[1].title}
-                  width={features[1].image.width || 373}
-                  height={features[1].image.height || 288}
-                  className="object-cover w-full h-full"
-                />
-              )}
-            </div>
-
-            {/* Secure */}
-            <h3 className="w-figma-373.33 h-figma-text font-manrope font-medium text-figma-sm leading-[115%] text-center text-text-black">
-              {features[1]?.title}
-            </h3>
-          </div>
-
-          {/* Third Icon information container */}
-          <div className="flex flex-col items-center gap-figma-15 w-figma-373.33 h-figma-317.09 flex-1">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-figma-21.33 w-figma-373.33 h-figma-288.09 bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
-              {features[2]?.image.url && (
-                <Image
-                  src={features[2].image.url}
-                  alt={features[2].image.alt || features[2].title}
-                  width={features[2].image.width || 373}
-                  height={features[2].image.height || 288}
-                  className="object-cover w-full h-full"
-                />
-              )}
-            </div>
-
-            {/* Earn Interest */}
-            <h3 className="w-figma-373.33 h-figma-text font-manrope font-medium text-figma-sm leading-[115%] text-center text-text-black">
-              {features[2]?.title}
-            </h3>
-          </div>
         </div>
       </div>
 
@@ -115,71 +73,29 @@ const FirstClass: React.FC<FirstClassProps> = ({ data }) => {
         {/* Icon section container */}
         <div className="flex flex-col justify-center items-start pb-2 gap-figma-4xl w-figma-335 h-figma-925">
           
-          {/* First Icon information container */}
-          <div className="flex flex-col items-center gap-figma-15 w-figma-335 h-figma-279">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-figma-21.33 w-figma-335 h-figma-250 bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
-              {features[0]?.image.url && (
-                <Image
-                  src={features[0].image.url}
-                  alt={features[0].image.alt || features[0].title}
-                  width={features[0].image.width || 335}
-                  height={features[0].image.height || 250}
-                  className="object-cover w-full h-full"
-                />
-              )}
+          {features && features.map((feature, index) => (
+            <div key={index} className="flex flex-col items-center gap-figma-15 w-figma-335 h-figma-279">
+              
+              {/* Icon container */}
+              <div className="flex flex-col justify-center items-center gap-figma-21.33 w-figma-335 h-figma-250 bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
+                {feature.image?.url && (
+                  <Image
+                    src={feature.image.url}
+                    alt={feature.image.alt || feature.title}
+                    width={feature.image.width || 335}
+                    height={feature.image.height || 250}
+                    className="object-cover w-full h-full"
+                  />
+                )}
+              </div>
+
+              {/* Title */}
+              <h3 className="w-figma-335 h-figma-text font-manrope font-medium text-[11px] leading-[125%] text-center text-text-black">
+                {feature.title}
+              </h3>
             </div>
+          ))}
 
-            {/* Safe Storage */}
-            <h3 className="w-figma-335 h-figma-text font-manrope font-medium text-[11px] leading-[125%] text-center text-text-black">
-              {features[0]?.title}
-            </h3>
-          </div>
-
-          {/* Second Icon information container */}
-          <div className="flex flex-col items-center gap-figma-15 w-figma-335 h-figma-279">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-figma-21.33 w-figma-335 h-figma-250 bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
-              {features[1]?.image.url && (
-                <Image
-                  src={features[1].image.url}
-                  alt={features[1].image.alt || features[1].title}
-                  width={features[1].image.width || 335}
-                  height={features[1].image.height || 250}
-                  className="object-cover w-full h-full"
-                />
-              )}
-            </div>
-
-            {/* Secure */}
-            <h3 className="w-figma-335 h-figma-text font-manrope font-medium text-[11px] leading-[125%] text-center text-text-black">
-              {features[1]?.title}
-            </h3>
-          </div>
-
-          {/* Third Icon information container */}
-          <div className="flex flex-col items-center gap-figma-15 w-figma-335 h-figma-279">
-            
-            {/* Icon container */}
-            <div className="flex flex-col justify-center items-center gap-figma-21.33 w-figma-335 h-figma-250 bg-background-1 rounded-figma-lg relative overflow-hidden transition-transform duration-500 ease-in-out hover:-translate-y-2">
-              {features[2]?.image.url && (
-                <Image
-                  src={features[2].image.url}
-                  alt={features[2].image.alt || features[2].title}
-                  width={features[2].image.width || 335}
-                  height={features[2].image.height || 250}
-                  className="object-cover w-full h-full"
-                />
-              )}
-            </div>
-
-            {/* Earn Interest */}
-            <h3 className="w-figma-335 h-figma-text font-manrope font-medium text-[11px] leading-[125%] text-center text-text-black">
-              {features[2]?.title}
-            </h3>
-          </div>
         </div>
       </div>
     </section>

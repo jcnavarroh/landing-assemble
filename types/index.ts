@@ -20,18 +20,15 @@ export interface Body {
   row_2:      Row2;
 }
 
-export interface HeroData extends HeroImage {
+export interface HeroImage {
+  desktop_image?: Image;
+  mobile_image?:  Image;
   title: string;
   subtitle: string;
   cta_primary: string;
   cta_secondary: string;
   trusted_by: string;
   logos: string[];
-}
-
-export interface HeroImage {
-  desktop_image?: Image;
-  mobile_image?:  Image;
 }
 
 export interface Image {
@@ -132,7 +129,7 @@ export interface ApiResponse<T> {
 
 // Component Props types
 export interface HeroProps {
-  data?: HeroData;
+  data?: HeroImage;
 }
 
 export interface ReliableProps {

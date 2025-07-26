@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
 
           {/* Menu items */}
           <div className="flex flex-row items-center gap-figma-3xl">
-            {menuItems.map((menuItem, index) => (
+            {menuItems && menuItems.map((menuItem, index) => (
               <Link
                 key={index}
                 href={menuItem.item.url}
@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
         {/* Contact links */}
         <nav className="flex flex-row items-end justify-end w-[1200px] h-[14px] flex-none order-1 flex-grow-0" role="navigation" aria-label="Contact links">
           <div className="flex flex-row items-center gap-figma-xl">
-            {contactLinks?.map((contactLink, index) => (
+            {contactLinks && contactLinks.map((contactLink, index) => (
               <Link
                 key={index}
                 href={contactLink.item.url}
@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
 
           {/* Menu items - Hidden on mobile for now, can be added as hamburger menu */}
           <div className="hidden">
-            {menuItems.map((menuItem, index) => (
+            {menuItems && menuItems.map((menuItem, index) => (
               <Link
                 key={index}
                 href={menuItem.item.url}
@@ -91,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
         {/* Contact links */}
         <nav className="flex flex-row items-start w-[335px] h-[14px] flex-none order-1 flex-grow-0" role="navigation" aria-label="Contact links">
           <div className="flex flex-row items-center gap-figma-xl">
-            {contactLinks?.map((contactLink, index) => (
+            {contactLinks && contactLinks.map((contactLink, index) => (
               <Link
                 key={index}
                 href={contactLink.item.url}

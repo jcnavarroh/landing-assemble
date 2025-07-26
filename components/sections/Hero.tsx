@@ -71,7 +71,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
             <div className="flex space-x-figma-3xl items-center">
               <div className="text-figma-2xl font-bold text-text-paragraph">{data.trusted_by}</div>
               <div className="flex space-x-figma-3xl">
-                {data.logos.map((logo, index) => (
+                {data.logos && data.logos.map((logo, index) => (
                   <div 
                     key={index}
                     className="w-16 h-8 bg-background-5 rounded flex items-center justify-center text-figma-xs text-text-paragraph"
@@ -144,7 +144,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
             <div className="flex space-x-figma-lg items-center">
               <div className="text-figma-lg font-bold text-text-paragraph">{data.trusted_by}</div>
               <div className="flex space-x-figma-lg">
-                {data.logos.map((logo, index) => (
+                {data.logos && data.logos.map((logo, index) => (
                   <div 
                     key={index}
                     className="w-12 h-6 bg-background-5 rounded flex items-center justify-center text-figma-xs text-text-paragraph"

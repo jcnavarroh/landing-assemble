@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import Hero from '../Hero';
-import { HeroData, Image } from '../../../types';
+import { HeroImage, Image } from '../../../types';
 
 // Partial mock for the Image type
 const mockImage = (url: string, alt: string): Partial<Image> => ({ url, alt, width: 100, height: 100 });
 
 // Mock data for the Hero component
-const mockHeroData: HeroData = {
+const mockHeroData: HeroImage = {
   desktop_image: mockImage('/desktop-hero.jpg', 'Desktop hero image') as Image,
   mobile_image: mockImage('/mobile-hero.jpg', 'Mobile hero image') as Image,
   title: "Connect, Collaborate, Innovate",
@@ -53,7 +53,7 @@ describe('Hero Component', () => {
 
   describe('Fallback Content', () => {
     test('renders fallback content when images are not provided', () => {
-      const dataWithoutImages: HeroData = { ...mockHeroData, desktop_image: undefined, mobile_image: undefined };
+      const dataWithoutImages: HeroImage = { ...mockHeroData, desktop_image: undefined, mobile_image: undefined };
       render(<Hero data={dataWithoutImages} />);
       
       const desktopHero = screen.getByTestId('desktop-hero');

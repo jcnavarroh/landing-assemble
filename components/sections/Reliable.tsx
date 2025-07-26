@@ -26,59 +26,34 @@ const Reliable: React.FC<ReliableProps> = ({ data }) => {
         {/* Section content */}
         <div className="flex flex-row items-start gap-5 w-[1200px] h-[518.51px]">
           
-          {/* First Benefit container */}
-          <div className="flex flex-col items-start gap-5 w-[590px] h-[518.51px] flex-1">
-            
-            {/* Benefit image */}
-            <div className="w-[590px] h-[457.51px] rounded-[10px] flex items-center justify-center relative overflow-hidden">
-              {benefits[0]?.image && (
-                <Image
-                  src={benefits[0].image.url}
-                  alt={benefits[0].image.alt || benefits[0].title}
-                  width={benefits[0].image.width || 590}
-                  height={benefits[0].image.height || 457}
-                  className="object-cover w-full h-full"
-                />
-              )}
-            </div>
+          {benefits && benefits.map((benefit, index) => (
+            <div key={index} className="flex flex-col items-start gap-5 w-[590px] h-[518.51px] flex-1">
+              
+              {/* Benefit image */}
+              <div className="w-[590px] h-[457.51px] rounded-[10px] flex items-center justify-center relative overflow-hidden">
+                {benefit.image && (
+                  <Image
+                    src={benefit.image.url}
+                    alt={benefit.image.alt || benefit.title}
+                    width={benefit.image.width || 590}
+                    height={benefit.image.height || 457}
+                    className="object-cover w-full h-full"
+                  />
+                )}
+              </div>
 
-            {/* Benefit information */}
-            <div className="flex flex-col items-start w-[590px] h-[42px]">
-              <h3 className="w-[590px] h-[14px] font-manrope font-medium text-xs leading-[115%] text-[#394508]">
-                {benefits[0]?.title}
-              </h3>
-              <p className="w-[590px] h-[28px] font-manrope font-medium text-xs leading-[115%] text-[#777777] mt-2">
-                {benefits[0]?.description}
-              </p>
+              {/* Benefit information */}
+              <div className="flex flex-col items-start w-[590px] h-[42px]">
+                <h3 className="w-[590px] h-[14px] font-manrope font-medium text-xs leading-[115%] text-[#394508]">
+                  {benefit.title}
+                </h3>
+                <p className="w-[590px] h-[28px] font-manrope font-medium text-xs leading-[115%] text-[#777777] mt-2">
+                  {benefit.description}
+                </p>
+              </div>
             </div>
-          </div>
+          ))}
 
-          {/* Second Benefit container */}
-          <div className="flex flex-col items-start gap-5 w-[590px] h-[504.51px] flex-1">
-            
-            {/* Benefit image */}
-            <div className="w-[590px] h-[457.51px] rounded-[10px] flex items-center justify-center relative overflow-hidden">
-              {benefits[1]?.image && (
-                <Image
-                  src={benefits[1].image.url}
-                  alt={benefits[1].image.alt || benefits[1].title}
-                  width={benefits[1].image.width || 590}
-                  height={benefits[1].image.height || 457}
-                  className="object-cover w-full h-full"
-                />
-              )}
-            </div>
-
-            {/* Benefit information */}
-            <div className="flex flex-col items-start w-[590px] h-[28px]">
-              <h3 className="w-[590px] h-[14px] font-manrope font-medium text-xs leading-[115%] text-[#394508]">
-                {benefits[1]?.title}
-              </h3>
-              <p className="w-[590px] h-[14px] font-manrope font-medium text-xs leading-[115%] text-[#777777] mt-2">
-                {benefits[1]?.description}
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -95,59 +70,34 @@ const Reliable: React.FC<ReliableProps> = ({ data }) => {
         {/* Section content */}
         <div className="flex flex-col items-start gap-5 w-[335px] h-[661.54px]">
           
-          {/* First Benefit container */}
-          <div className="flex flex-col items-start gap-4 w-[335px] h-[320.77px]">
-            
-            {/* Benefit image */}
-            <div className="w-[335px] h-[259.77px] rounded-[10px] flex items-center justify-center relative overflow-hidden">
-              {benefits[0]?.image && (
-                <Image
-                  src={benefits[0].image.url}
-                  alt={benefits[0].image.alt || benefits[0].title}
-                  width={benefits[0].image.width || 335}
-                  height={benefits[0].image.height || 259}
-                  className="object-cover w-full h-full"
-                />
-              )}
-            </div>
+          {benefits && benefits.map((benefit, index) => (
+            <div key={index} className="flex flex-col items-start gap-4 w-[335px] h-[320.77px]">
+              
+              {/* Benefit image */}
+              <div className="w-[335px] h-[259.77px] rounded-[10px] flex items-center justify-center relative overflow-hidden">
+                {benefit.image && (
+                  <Image
+                    src={benefit.image.url}
+                    alt={benefit.image.alt || benefit.title}
+                    width={benefit.image.width || 335}
+                    height={benefit.image.height || 259}
+                    className="object-cover w-full h-full"
+                  />
+                )}
+              </div>
 
-            {/* Benefit information */}
-            <div className="flex flex-col items-start w-[335px] h-[42px]">
-              <h3 className="w-[335px] h-[14px] font-manrope font-medium text-[11px] leading-[125%] text-black">
-                {benefits[0]?.title}
-              </h3>
-              <p className="w-[335px] h-[28px] font-manrope font-medium text-[11px] leading-[125%] text-[#777777] mt-2">
-                {benefits[0]?.description}
-              </p>
+              {/* Benefit information */}
+              <div className="flex flex-col items-start w-[335px] h-[42px]">
+                <h3 className="w-[335px] h-[14px] font-manrope font-medium text-[11px] leading-[125%] text-black">
+                  {benefit.title}
+                </h3>
+                <p className="w-[335px] h-[28px] font-manrope font-medium text-[11px] leading-[125%] text-[#777777] mt-2">
+                  {benefit.description}
+                </p>
+              </div>
             </div>
-          </div>
+          ))}
 
-          {/* Second Benefit container */}
-          <div className="flex flex-col items-start gap-4 w-[335px] h-[320.77px]">
-            
-            {/* Benefit image */}
-            <div className="w-[335px] h-[259.77px] rounded-[10px] flex items-center justify-center relative overflow-hidden">
-              {benefits[1]?.image && (
-                <Image
-                  src={benefits[1].image.url}
-                  alt={benefits[1].image.alt || benefits[1].title}
-                  width={benefits[1].image.width || 335}
-                  height={benefits[1].image.height || 259}
-                  className="object-cover w-full h-full"
-                />
-              )}
-            </div>
-
-            {/* Benefit information */}
-            <div className="flex flex-col items-start w-[335px] h-[42px]">
-              <h3 className="w-[335px] h-[14px] font-manrope font-medium text-[11px] leading-[125%] text-black">
-                {benefits[1]?.title}
-              </h3>
-              <p className="w-[335px] h-[28px] font-manrope font-medium text-[11px] leading-[125%] text-[#A3A3A3] mt-2">
-                {benefits[1]?.description}
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
