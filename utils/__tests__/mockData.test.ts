@@ -72,7 +72,7 @@ describe('mockData', () => {
       expect(result.menu_items).toHaveLength(1);
       expect(result.menu_items[0].item.title).toBe('Custom Menu');
       expect(result.contact_links).toHaveLength(1);
-      expect(result.contact_links[0].item.title).toBe('Custom Contact');
+      expect(result.contact_links![0].item.title).toBe('Custom Contact');
     });
 
     it('should use mock contact links when API data has no contact links', () => {
