@@ -30,8 +30,8 @@ export interface HeroData extends HeroImage {
 }
 
 export interface HeroImage {
-  desktop_image: Image;
-  mobile_image:  Image;
+  desktop_image?: Image;
+  mobile_image?:  Image;
 }
 
 export interface Image {

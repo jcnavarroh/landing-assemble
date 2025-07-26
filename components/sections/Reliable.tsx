@@ -14,7 +14,7 @@ const Reliable: React.FC<ReliableProps> = ({ data }) => {
   return (
     <section className="bg-white top-[-160px] md:top-[-175px] relative mb-[-160px] md:mb-[-175px]">
       {/* Desktop version */}
-      <div className="hidden md:flex flex-col items-center px-10 pt-20 gap-8 w-[1280px] h-[672.51px] mx-auto bg-background-2">
+      <div data-testid="desktop-reliable" className="hidden md:flex flex-col items-center px-10 pt-20 gap-8 w-[1280px] h-[672.51px] mx-auto bg-background-2">
         
         {/* The Most Reliable App - Title */}
         <div className="flex flex-col justify-center items-center gap-1 w-[481px] h-11">
@@ -83,7 +83,7 @@ const Reliable: React.FC<ReliableProps> = ({ data }) => {
       </div>
 
       {/* Mobile version */}
-      <div className="md:hidden flex flex-col items-center px-5 py-12 gap-8 w-[375px] h-[821.54px] mx-auto">
+      <div data-testid="mobile-reliable" className="md:hidden flex flex-col items-center px-5 py-12 gap-8 w-[375px] h-[821.54px] mx-auto">
         
         {/* The Most Reliable App - Title */}
         <div className="flex flex-col justify-center items-center gap-1 w-[335px] h-[30px]">

@@ -13,7 +13,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
   return (
     <section className="bg-background-2">
       {/* Desktop version */}
-      <div className="desktop-only flex flex-col items-center px-figma-4xl pt-figma-3xl gap-figma-3xl w-[1280px] h-[600px] mx-auto">
+      <div data-testid="desktop-hero" className="desktop-only flex flex-col items-center px-figma-4xl pt-figma-3xl gap-figma-3xl w-[1280px] h-[600px] mx-auto">
         
         {/* Header image */}
         <div className="w-[1200px] h-[635px] rounded-figma-xl flex items-center justify-center relative overflow-hidden">
@@ -86,7 +86,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
       </div>
 
       {/* Mobile version */}
-      <div className="mobile-only flex flex-col items-center px-figma-sm pt-figma-5xl gap-[25px] w-[375px] h-[503px] mx-auto">
+      <div data-testid="mobile-hero" className="mobile-only flex flex-col items-center px-figma-sm pt-figma-5xl gap-[25px] w-[375px] h-[503px] mx-auto">
         
         {/* Header image */}
         <div className="w-[335px] h-[400px] rounded-figma-xl flex items-center justify-center relative overflow-hidden">

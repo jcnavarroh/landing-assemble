@@ -14,7 +14,7 @@ const FirstClass: React.FC<FirstClassProps> = ({ data }) => {
   return (
     <section className="bg-background-2">
       {/* Desktop version */}
-      <div className="desktop-only flex flex-col items-center px-figma-4xl pt-figma-5xl gap-figma-4xl w-[1280px] h-[558px] mx-auto">
+      <div data-testid="desktop-first-class" className="desktop-only flex flex-col items-center px-figma-4xl pt-figma-5xl gap-figma-4xl w-[1280px] h-[558px] mx-auto">
         
         {/* Section header */}
         <div className="flex flex-col items-center gap-figma-sm w-figma-481 h-figma-44">
@@ -99,7 +99,7 @@ const FirstClass: React.FC<FirstClassProps> = ({ data }) => {
       </div>
 
       {/* Mobile version */}
-      <div className="mobile-only flex flex-col items-center px-figma-sm py-figma-5xl gap-figma-4xl w-figma-335 h-[1123px] mx-auto">
+      <div data-testid="mobile-first-class" className="mobile-only flex flex-col items-center px-figma-sm py-figma-5xl gap-figma-4xl w-figma-335 h-[1123px] mx-auto">
         
         {/* Section header */}
         <div className="flex flex-col items-center gap-figma-sm w-figma-335 h-figma-30">

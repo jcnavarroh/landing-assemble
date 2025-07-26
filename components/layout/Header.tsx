@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
   return (
     <header className="bg-background-1" role="banner">
       {/* Desktop version */}
-      <div className="desktop-only flex flex-col items-start px-figma-4xl py-figma-lg gap-figma-4xl w-[1280px] h-[157px] mx-auto">
+      <div data-testid="desktop-header" className="desktop-only flex flex-col items-start px-figma-4xl py-figma-lg gap-figma-4xl w-[1280px] h-[157px] mx-auto">
         {/* Navigation */}
         <nav className="flex flex-row justify-between items-start gap-[49px] w-[858px] h-[23px]" role="navigation" aria-label="Main navigation">
           {/* Logo */}
@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ data }) => {
       </div>
 
       {/* Mobile version */}
-      <div className="mobile-only flex flex-col justify-center items-start px-figma-sm py-figma-lg pb-figma-4xl gap-figma-4xl w-[375px] max-w-[900px] h-[157px] mx-auto">
+      <div data-testid="mobile-header" className="mobile-only flex flex-col justify-center items-start px-figma-sm py-figma-lg pb-figma-4xl gap-figma-4xl w-[375px] max-w-[900px] h-[157px] mx-auto">
         {/* Navigation */}
         <nav className="flex flex-row justify-between items-start gap-[49px] w-[335px] h-[23px]" role="navigation" aria-label="Main navigation">
           {/* Logo */}

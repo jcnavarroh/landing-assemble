@@ -12,7 +12,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
   return (
     <footer className="bg-background-3">
       {/* Desktop version */}
-      <div className="desktop-only flex flex-row items-start px-figma-4xl py-[31px] gap-figma-sm w-[1280px] h-[221px] mx-auto">
+      <div data-testid="desktop-footer" className="desktop-only flex flex-row items-start px-figma-4xl py-[31px] gap-figma-sm w-[1280px] h-[221px] mx-auto">
         
         {/* Left side footer container */}
         <div className="w-[1023px] h-[26px] relative flex-none order-0 flex-grow">
@@ -56,7 +56,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
       </div>
 
       {/* Mobile version */}
-      <div className="mobile-only flex flex-row items-start px-figma-sm py-[31px] gap-figma-sm w-[375px] h-[221px] mx-auto">
+      <div data-testid="mobile-footer" className="mobile-only flex flex-row items-start px-figma-sm py-[31px] gap-figma-sm w-[375px] h-[221px] mx-auto">
         
         {/* Left side footer container */}
         <div className="w-[225px] h-[20px] relative flex-none order-0 flex-grow-0">
