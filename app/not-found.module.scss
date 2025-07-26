@@ -1,0 +1,249 @@
+// Import utilities
+@import '../styles/utilities.scss';
+
+// Custom utility classes using @apply
+@layer components {
+  .error-container-base {
+    @apply min-h-screen flex items-center justify-center bg-gradient-primary relative overflow-hidden;
+  }
+  
+  .error-content-base {
+    @apply text-center z-10 relative max-w-2xl mx-auto px-figma-lg;
+  }
+  
+  .error-number-base {
+    @apply flex justify-center items-center gap-figma-sm mb-figma-2xl;
+  }
+  
+  .digit-base {
+    @apply text-figma-42 font-figtree font-bold text-accent-1 relative;
+  }
+  
+  .title-base {
+    @apply heading-primary mb-figma-md;
+  }
+  
+  .description-base {
+    @apply body-text mb-figma-3xl;
+  }
+  
+  .actions-base {
+    @apply flex flex-col sm:flex-row gap-figma-lg justify-center items-center;
+  }
+  
+  .primary-button-base {
+    @apply btn-primary;
+  }
+  
+  .secondary-button-base {
+    @apply btn-secondary;
+  }
+  
+  .button-icon-base {
+    @apply w-5 h-5 transition-transform duration-300;
+  }
+  
+  .floating-shape-base {
+    @apply absolute rounded-full opacity-20 animate-pulse;
+  }
+}
+
+// Main container styles
+.errorContainer {
+  @apply error-container-base;
+  
+  &::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-accent-3/10 via-transparent to-accent-1/10;
+  }
+}
+
+// Content wrapper
+.errorContent {
+  @apply error-content-base;
+}
+
+// 404 Number styling
+.errorNumber {
+  @apply error-number-base;
+  
+  .digit {
+    @apply digit-base;
+    
+    // Individual digit animations
+    &:nth-child(1) {
+      animation: bounceIn 1s ease-out 0.2s both;
+    }
+    
+    &:nth-child(2) {
+      animation: bounceIn 1s ease-out 0.4s both;
+    }
+    
+    &:nth-child(3) {
+      animation: bounceIn 1s ease-out 0.6s both;
+    }
+    
+    // Glitch effect on hover
+    &:hover {
+      animation: glitch 0.3s ease-in-out;
+    }
+  }
+}
+
+// Error message styling
+.errorMessage {
+  @apply mb-figma-3xl;
+  
+  .title {
+    @apply title-base;
+    animation: slideInUp 0.8s ease-out 0.8s both;
+  }
+  
+  .description {
+    @apply description-base;
+    animation: slideInUp 0.8s ease-out 1s both;
+  }
+}
+
+// Action buttons styling
+.actions {
+  @apply actions-base;
+  animation: slideInUp 0.8s ease-out 1.2s both;
+  
+  .primaryButton {
+    @apply primary-button-base;
+    
+    &:hover .buttonIcon {
+      @apply transform translate-x-1;
+    }
+  }
+  
+  .secondaryButton {
+    @apply secondary-button-base;
+    
+    &:hover .buttonIcon {
+      @apply transform -translate-x-1;
+    }
+  }
+  
+  .buttonIcon {
+    @apply button-icon-base;
+  }
+}
+
+// Decorative elements
+.decorativeElements {
+  @apply absolute inset-0 pointer-events-none;
+  
+  .floatingShape {
+    @apply floating-shape-base;
+    
+    &:nth-child(1) {
+      @apply w-20 h-20 bg-accent-3 top-1/4 left-1/4;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    &:nth-child(2) {
+      @apply w-16 h-16 bg-accent-1 top-3/4 right-1/4;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+    
+    &:nth-child(3) {
+      @apply w-12 h-12 bg-background-4 bottom-1/4 left-1/2;
+      animation: float 7s ease-in-out infinite;
+    }
+  }
+}
+
+// Keyframe animations
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .errorNumber .digit {
+    @apply text-figma-28;
+  }
+  
+  .title {
+    @apply text-figma-xl;
+  }
+  
+  .description {
+    @apply text-figma-base;
+  }
+  
+  .actions {
+    @apply flex-col;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    @apply w-full justify-center;
+  }
+}
+
+// Dark mode support (if needed)
+@media (prefers-color-scheme: dark) {
+  .errorContainer {
+    @apply bg-gradient-to-br from-background-1 via-background-3 to-background-1;
+  }
+  
+  .title {
+    @apply text-text-white;
+  }
+  
+  .description {
+    @apply text-text-white/80;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .floatingShape {
+    @apply opacity-40;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    @apply border-2;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .digit,
+  .title,
+  .description,
+  .actions,
+  .floatingShape {
+    animation: none;
+  }
+  
+  .primaryButton:hover,
+  .secondaryButton:hover {
+    @apply transform-none;
+  }
+  
+  .buttonIcon {
+    @apply transition-none;
+  }
+} 

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
@@ -30,11 +31,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+// Component to handle data fetching with loading state
+async function LayoutContent({ children }: { children: React.ReactNode }) {
   // Fetch data from the API for Header and Footer
   let headerData: HeaderType | undefined = undefined;
   let footerData: FooterType | undefined = undefined;
@@ -60,17 +58,29 @@ export default async function RootLayout({
   // If there is an error, show the ErrorComponent
   if (error) {
     return (
-      <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <ErrorComponent 
-            message={`Failed to load page data: ${error}`}
-            retry={() => window.location.reload()}
-          />
-        </body>
-      </html>
+      <ErrorComponent 
+        message={`Failed to load page data: ${error}`}
+        retry={() => window.location.reload()}
+      />
     );
   }
 
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header data={headerData} />
+      <main id="main-content" className="flex-1" role="main">
+        {children}
+      </main>
+      <Footer data={footerData} />
+    </div>
+  );
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
       <body
@@ -81,13 +91,11 @@ export default async function RootLayout({
           Skip to main content
         </a>
         
-        <div className="min-h-screen flex flex-col">
-          <Header data={headerData} />
-          <main id="main-content" className="flex-1" role="main">
+        <Suspense fallback={<LoadingComponent message="Loading Assemble..." />}>
+          <LayoutContent>
             {children}
-          </main>
-          <Footer data={footerData} />
-        </div>
+          </LayoutContent>
+        </Suspense>
       </body>
     </html>
   );
