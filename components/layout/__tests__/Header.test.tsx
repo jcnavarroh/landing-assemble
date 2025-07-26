@@ -18,9 +18,27 @@ const mockHeaderData: HeaderType = {
 };
 
 describe('Header Component', () => {
-  test('renders nothing if no data is provided', () => {
-    const { container } = render(<Header data={undefined} />);
-    expect(container).toBeEmptyDOMElement();
+  test('renders fallback data when no data is provided', () => {
+    render(<Header data={undefined} />);
+    
+    // Should render fallback company name (check both desktop and mobile)
+    const desktopHeader = screen.getByTestId('desktop-header');
+    const mobileHeader = screen.getByTestId('mobile-header');
+    
+    expect(within(desktopHeader).getByText('Assemble')).toBeInTheDocument();
+    expect(within(mobileHeader).getByText('Assemble')).toBeInTheDocument();
+    
+    // Should render fallback menu items
+    expect(screen.getAllByText('Home')).toHaveLength(2); // Desktop and mobile
+    expect(screen.getAllByText('About')).toHaveLength(2);
+    expect(screen.getAllByText('Services')).toHaveLength(2);
+    expect(screen.getAllByText('Contact')).toHaveLength(2);
+    
+    // Should render fallback contact links
+    expect(screen.getAllByText('Email')).toHaveLength(2);
+    expect(screen.getAllByText('Phone')).toHaveLength(2);
+    expect(screen.getAllByText('LinkedIn')).toHaveLength(2);
+    expect(screen.getAllByText('Twitter')).toHaveLength(2);
   });
 
   describe('Desktop Header', () => {

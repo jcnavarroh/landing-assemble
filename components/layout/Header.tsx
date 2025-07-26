@@ -1,13 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
 import { HeaderProps } from '../../types';
+import { getHeaderDataWithFallback } from '../../utils/mockData';
 
 const Header: React.FC<HeaderProps> = ({ data }) => {
-  if (!data) {
-    return null;
+  // Use fallback data if no data is provided
+  const headerData = getHeaderDataWithFallback(data);
+  
+  // Log warning if using fallback data (only in development)
+  if (!data && process.env.NODE_ENV === 'development') {
+    console.warn('Header: Using fallback data - API data not available');
   }
 
-  const { menu_items: menuItems, contact_links: contactLinks, company_name: companyName } = data;
+  const { menu_items: menuItems, contact_links: contactLinks, company_name: companyName } = headerData;
 
   return (
     <header className="bg-background-1" role="banner">

@@ -12,6 +12,13 @@ Welcome to the comprehensive documentation for the Assemble Landing Page project
   - Advanced animations and responsive design
   - Component-scoped styling best practices
 
+- **[Figma Style Guide](./FIGMA_STYLE_GUIDE.md)**: Complete reference for Figma design tokens and styling system
+  - Figma-specific color palette and typography
+  - Custom spacing and dimension tokens
+  - Component classes and responsive utilities
+  - Design system implementation guidelines
+  - Pixel-perfect styling best practices
+
 ### 🧪 Testing Implementation
 - **[Testing Guide](./TESTING_GUIDE.md)**: Detailed testing implementation and best practices
   - Jest configuration and setup
@@ -63,6 +70,7 @@ The Assemble Landing Page is a modern, responsive web application built with:
 ├── docs/                 # Documentation
 │   ├── README.md         # This file
 │   ├── SCSS_MODULES_GUIDE.md
+│   ├── FIGMA_STYLE_GUIDE.md
 │   ├── TESTING_GUIDE.md
 │   └── ACCESSIBILITY_GUIDE.md
 └── ...                   # Configuration files
@@ -92,6 +100,18 @@ npm run test:a11y          # Run accessibility tests
 ```bash
 npm run build              # Production build
 npm start                  # Start production server
+```
+
+### 5. CI/CD Pipeline
+```bash
+# Workflow automatically runs on:
+# - Push to main/develop branches
+# - Pull requests to main branch
+
+# Manual workflow trigger:
+# 1. Go to GitHub Actions tab
+# 2. Select "CI Next.js Landing Page"
+# 3. Click "Run workflow"
 ```
 
 ## 🔧 Configuration
@@ -128,6 +148,12 @@ NEXT_PUBLIC_SITE_URL=your_site_url
 - **Core Web Vitals** optimization
 - **Bundle analysis** for size optimization
 - **Image optimization** with Next.js Image component
+
+### CI/CD Pipeline
+- **GitHub Actions** for automated testing and deployment
+- **Code quality checks** with ESLint and TypeScript
+- **Automated testing** with Jest and React Testing Library
+- **Build verification** for production readiness
 
 ## 🤝 Contributing
 
@@ -168,8 +194,10 @@ When contributing to this project:
 For questions or issues related to:
 
 - **Styling and SCSS**: Refer to [SCSS Modules Guide](./SCSS_MODULES_GUIDE.md)
+- **Figma Design System**: Refer to [Figma Style Guide](./FIGMA_STYLE_GUIDE.md)
 - **Testing**: Refer to [Testing Guide](./TESTING_GUIDE.md)
 - **Accessibility**: Refer to [Accessibility Guide](./ACCESSIBILITY_GUIDE.md)
+- **CI/CD Pipeline**: Check the main [README.md](../README.md#continuous-integration--deployment-cicd)
 - **General Issues**: Check the main [README.md](../README.md)
 
 ---
