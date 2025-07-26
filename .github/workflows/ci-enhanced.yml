@@ -92,9 +92,6 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Analyze bundle size
-        run: npx @next/bundle-analyzer
-
   performance:
     name: Performance Monitoring
     runs-on: ubuntu-latest
